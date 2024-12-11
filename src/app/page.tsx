@@ -5,7 +5,7 @@ import React from 'react';
 export default function Home() {
   return (
       <div>
-        <h1>Welcome to My App</h1>
+        <h1 className="prose">Welcome to My App</h1>
         <ul>
           <li>
             <Link href="/login">
@@ -28,8 +28,8 @@ export default function Home() {
             </Link>
           </li>
           <li>
-            <Link href="/">
-              Forgot Password
+            <Link href="/terms-and-conditions">
+                Terms and conditions
             </Link>
           </li>
         </ul>
