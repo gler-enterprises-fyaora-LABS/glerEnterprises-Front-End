@@ -1,38 +1,44 @@
+'use client'
 // pages/index.js
 import Link from 'next/link';
 import React from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {Box, Button, Stack, Typography} from "@mui/material";
+import {themeGlobal} from "@/utils/components/theme";
 
 export default function Home() {
-  return (
-      <div>
-        <h1 className="prose">Welcome to My App</h1>
-        <ul>
-          <li>
+
+    return (
+      <ThemeProvider theme={themeGlobal}>
+          <Box display="flex"
+               flexDirection="column"
+          >
+              <Typography variant="h1" align="center" className="prose">Welcome to Gler </Typography>
+              <Typography variant="h6" className="prose">This is temporary routing</Typography>
+          </Box>
+        <Box
+            display="flex"
+            minHeight="100vh"
+            marginRight="10px"
+        >
+          <Stack direction="column" spacing={2} sx={{ margin: '16px' }}>
             <Link href="/login">
-              Login
+              <Button variant="contained">Login</Button>
             </Link>
-          </li>
-          <li>
             <Link href="/register">
-              Register
+              <Button variant="contained">Register</Button>
             </Link>
-          </li>
-          <li>
-            <Link href="/forgot-password">
-              Forgot Password
-            </Link>
-          </li>
-          <li>
             <Link href="/verify-email">
-              Verify Email
+              <Button variant="contained">Verify Email</Button>
             </Link>
-          </li>
-          <li>
+            <Link href="/forgot-password">
+              <Button variant="contained">Forgot Password</Button>
+            </Link>
             <Link href="/terms-and-conditions">
-                Terms and conditions
+              <Button variant="contained">Terms and conditions</Button>
             </Link>
-          </li>
-        </ul>
-      </div>
+          </Stack>
+        </Box>
+      </ThemeProvider>
   );
 }
