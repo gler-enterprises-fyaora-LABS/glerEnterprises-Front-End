@@ -1,0 +1,11 @@
+{
+  "serviceProvider": "Fournisseur de services",
+  "welcomeMessage": "Bienvenue sur notre plateforme!",
+  "login": "Se connecter",
+  "register": "S'inscrire",
+  "forgotPassword": "Mot de passe oublié",
+  "verifyEmail": "Vérifier l'email",
+  "termsAndConditions": "Conditions générales",
+  "customer": "Client",
+  "next": "Suivant"
+}

@@ -1,0 +1,13 @@
+{
+  "serviceProvider": "Service Provider",
+  "welcomeMessage": "Welcome to our platform!",
+  "login": "Login",
+  "register": "Register",
+  "forgotPassword": "Forgot Password",
+  "verifyEmail": "Verify Email",
+  "termsAndConditions": "Terms And Conditions",
+  "customer": "Customer",
+  "next": "Next",
+  "signUp": "Sign up",
+  "accountType": "Account Type"
+}
