@@ -96,7 +96,7 @@ const RegisterCarousel = () => {
         {currentSlide === 3 && (
             <Box>
                 <Typography variant="h5" component="div" align="center">
-                    Welcome to Slide 3
+                    This is the next slide.
                 </Typography>
                 <Typography variant="body1" align="center">
                     This is the last slide.
