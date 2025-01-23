@@ -1,13 +1,10 @@
 import React from 'react';
-import {Typography} from "@mui/material";
-import {ThemeProvider} from "@mui/material/styles";
-import {themeGlobal} from "@/utils/components/theme";
 
 export default function Index() {
     return (
-        <ThemeProvider theme={themeGlobal}>
-            <Typography variant="h1" className="prose">Forgot Password</Typography>
+        <div>
+            <div className="bg-red-500 text-white p-4">Forgot Password</div>
             {/* Your recover pass form here */}
-        </ThemeProvider>
+        </div>
     );
 }

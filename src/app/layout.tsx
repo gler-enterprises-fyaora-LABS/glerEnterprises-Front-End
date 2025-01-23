@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Gler",
@@ -8,17 +6,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
+                                     children,
+                                   }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <AppRouterCacheProvider options={{ key: 'css' }}>
-            {children}
-        </AppRouterCacheProvider>
+      <html lang="en">
+      <body className="bg-gray-100 text-gray-800">
+      {children}
       </body>
-    </html>
+      </html>
   );
 }

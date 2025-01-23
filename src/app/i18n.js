@@ -1,5 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import en from '../../public/locales/en.json';
+import fr from '../../public/locales/fr.json';
 
 // Initialize i18next
 i18n
@@ -12,10 +14,10 @@ i18n
         },
         resources: {
             en: {
-                common: require("../../public/locales/en.json"), // If kept as require
+                common: en, // Using ES6 imports
             },
             fr: {
-                common: require("../../public/locales/fr.json"), // If kept as require
+                common: fr, // Using ES6 imports
             },
         },
         ns: ["common"], // Define namespaces (e.g., "common")

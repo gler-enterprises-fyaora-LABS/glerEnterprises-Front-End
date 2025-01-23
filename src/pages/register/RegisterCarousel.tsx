@@ -1,18 +1,10 @@
 import React, { useState } from "react";
-import { Box, Typography, Button, Stack } from "@mui/material";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 import "../../app/i18n";
 
 const RegisterCarousel = () => {
     const { t } = useTranslation();
     const [currentSlide, setCurrentSlide] = useState(1);
-    const settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 5
-    };
 
     const showNextSlide = () => {
         setCurrentSlide((prevSlide) => (prevSlide < 3 ? prevSlide + 1 : 1));
@@ -21,110 +13,61 @@ const RegisterCarousel = () => {
     const selectUser = () => {
         console.log("User button clicked");
     };
+
     const selectService = () => {
         console.log("Service button clicked");
     };
 
-    return (<Box style={{ width: "100%", height: "100%", textAlign: "center", position: "relative" }}>
-        {currentSlide === 1 && (
-            <Box>
-                <Typography variant="h3">
-                    {t("signUp")}
-                </Typography>
-                <Box style={{ marginTop: 64 }}>
-                    <Typography style={{ width: "80%" }} variant="h5">
-                        {t("accountType")}
-                    </Typography>
-                    <Stack
-                        style={{
-                            width: "100%",
-                            height: 200,
-                            backgroundColor: "#FFFFFF",
-                            borderRadius: "50px",
-                        }}
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                        direction="row"
-                        spacing={2}
-                    >
+    return (
+        <div className="w-full h-full text-center relative">
+            {currentSlide === 1 && (
+                <div>
+                    <h3 className="text-3xl font-bold">{t("signUp")}</h3>
+                    <div className="mt-16">
+                        <h5 className="text-xl font-medium w-4/5 mx-auto">{t("accountType")}</h5>
+                        <div className="w-full h-52 bg-white rounded-[50px] flex justify-center items-center gap-8 mt-4">
+                            <button
+                                className="w-36 h-16 border-2 border-blue-600 rounded-lg text-blue-600 font-normal hover:bg-blue-50"
+                                onClick={selectUser}
+                            >
+                                {t("customer")}
+                            </button>
+                            <button
+                                className="w-36 h-16 border-2 border-blue-600 rounded-lg text-blue-600 font-normal hover:bg-blue-50"
+                                onClick={selectService}
+                            >
+                                {t("serviceProvider")}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
-                        <Button
-                            style={{
-                                textWrap: "wrap",
-                                width: 150,
-                                height: 70,
-                                border: "2px solid #1A78F2",
-                                borderRadius: 10,
-                                textTransform: "none",
-                                color: "#1A78F2",
-                            }}
-                            onClick={selectUser}
-                        >
-                            {t("customer")}
-                        </Button>
-                        <Button
-                            style={{
-                                textWrap: "wrap",
-                                width: 150,
-                                height: 70,
-                                border: "2px solid #1A78F2",
-                                borderRadius: 10,
-                                textTransform: "none",
-                                color: "#1A78F2",
-                            }}
-                            onClick={selectService}
-                        >
-                            {t("serviceProvider")}
-                        </Button>
-                    </Stack>
-                </Box>
-            </Box>
-        )}
+            {currentSlide === 2 && (
+                <div>
+                    <h5 className="text-xl font-semibold text-center">Welcome to Slide 1</h5>
+                    <p className="text-center">This is the first slide.</p>
+                </div>
+            )}
 
-        {currentSlide === 2 && (
-            <Box>
-                <Typography variant="h5" component="div" align="center">
-                    Welcome to Slide 1
-                </Typography>
-                <Typography variant="body1" align="center">
-                    This is the first slide.
-                </Typography>
-            </Box>
-        )}
+            {currentSlide === 3 && (
+                <div>
+                    <h5 className="text-xl font-semibold text-center">This is the next slide.</h5>
+                    <p className="text-center">This is the last slide.</p>
+                </div>
+            )}
 
-        {currentSlide === 3 && (
-            <Box>
-                <Typography variant="h5" component="div" align="center">
-                    This is the next slide.
-                </Typography>
-                <Typography variant="body1" align="center">
-                    This is the last slide.
-                </Typography>
-            </Box>
-        )}
-
-        {/* Navigation Buttons */}
-        <Box
-            style={{
-                position: "relative",
-                top: "calc(100vh - 70%)",
-            }}
-        >
-            <Button
-                style={{
-                    width: 342,
-                    height: 48,
-                    borderRadius: 100,
-                    background: "#1A78F2",
-                    color: "#FFFFFF",
-                }}
-                variant="contained"
-                onClick={showNextSlide}
-            >
-                {t("next")}
-            </Button>
-        </Box>
-    </Box>);
+            {/* Navigation Button */}
+            <div className="absolute top-[calc(100vh-70%)] left-1/2 transform -translate-x-1/2">
+                <button
+                    className="w-[342px] h-12 rounded-full bg-blue-600 text-white hover:bg-blue-700"
+                    onClick={showNextSlide}
+                >
+                    {t("next")}
+                </button>
+            </div>
+        </div>
+    );
 };
+
 export default RegisterCarousel;
