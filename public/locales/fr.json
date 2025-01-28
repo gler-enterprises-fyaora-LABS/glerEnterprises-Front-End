@@ -1,11 +1,35 @@
 {
   "serviceProvider": "Fournisseur de services",
-  "welcomeMessage": "Bienvenue sur notre plateforme!",
-  "login": "Se connecter",
+  "welcomeMessage": "Bienvenue sur notre plateforme !",
   "register": "S'inscrire",
   "forgotPassword": "Mot de passe oublié",
   "verifyEmail": "Vérifier l'email",
   "termsAndConditions": "Conditions générales",
   "customer": "Client",
-  "next": "Suivant"
+  "next": "Suivant",
+  "signUp": "S'inscrire",
+  "accountType": "Type de compte",
+  "login": {
+    "title": "Se connecter",
+    "email": "Entrez votre email",
+    "password": "Entrez votre mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "signIn": "Se connecter",
+    "newHere": "Nouveau ici ?",
+    "createAccount": "Créer un compte"
+  },
+  "button": {
+    "google": "Continuer avec Google",
+    "apple": "Se connecter avec Apple"
+  },
+  "alt": {
+    "logo": "Logo de l'entreprise",
+    "google": "Icône de connexion Google",
+    "apple": "Icône de connexion Apple",
+    "togglePasswordVisibility": "Afficher/masquer le mot de passe"
+  },
+  "error": {
+    "fillFields": "Veuillez remplir les champs utilisateur et mot de passe.",
+    "invalidCredentials": "Identifiants invalides ou erreur serveur. Veuillez réessayer."
+  }
 }

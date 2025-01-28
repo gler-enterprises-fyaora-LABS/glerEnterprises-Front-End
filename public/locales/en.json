@@ -1,7 +1,6 @@
 {
   "serviceProvider": "Service Provider",
   "welcomeMessage": "Welcome to our platform!",
-  "login": "Login",
   "register": "Register",
   "forgotPassword": "Forgot Password",
   "verifyEmail": "Verify Email",
@@ -9,5 +8,28 @@
   "customer": "Customer",
   "next": "Next",
   "signUp": "Sign up",
-  "accountType": "Account Type"
+  "accountType": "Account Type",
+  "login": {
+    "title": "Sign in",
+    "email": "Enter your email",
+    "password": "Enter your password",
+    "forgotPassword": "Forgot Password?",
+    "signIn": "Sign In",
+    "newHere": "New here?",
+    "createAccount": "Create account"
+  },
+  "button": {
+    "google": "Continue with Google",
+    "apple": "Sign in with Apple"
+  },
+  "alt": {
+    "logo": "Company logo",
+    "google": "Google login icon",
+    "apple": "Apple login icon",
+    "togglePasswordVisibility": "Toggle password visibility"
+  },
+  "error": {
+    "fillFields": "Please fill out user and password fields.",
+    "invalidCredentials": "Invalid credentials or server error. Please try again."
+  }
 }
