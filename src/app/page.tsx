@@ -40,7 +40,7 @@ export default function Home() {
             <div className="flex flex-col items-start w-full max-w-md mx-auto mt-10 space-y-4">
                 <Link href="/login">
                     <div className="w-full bg-blue-600 text-white text-center py-2 rounded hover:bg-blue-700 transition">
-                        {t('login.login')}
+                        {t('login.title')}
                     </div>
                 </Link>
                 <Link href="/register">
