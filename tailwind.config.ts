@@ -13,10 +13,12 @@ export default {
                 foreground: "var(--foreground)",
                 'neutral-100': 'var(--Neutral-100, #12153A)',
                 'neutral-300': '#79767D',
-                'neutral-500': '#EBF1FF'
+                'neutral-500': '#EBF1FF',
+                'blue-neutral': '#1A78F2',
             },
             fontFamily: {
                 sans: ["Inter", "sans-serif", "Poppins"],
+                poppins: ["Poppins", "sans-serif"],
             },
             fontSize: {
                 '14': '14px',
