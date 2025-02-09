@@ -18,6 +18,20 @@
     "newHere": "New here?",
     "createAccount": "Create account"
   },
+  "newPass": {
+    "title": "Set new password",
+    "password": "Enter your new password",
+    "confirmPassword": "Confirm password",
+    "forgotPassword": "Forgot Password?",
+    "change": "Change password",
+    "newHere": "New here?",
+    "createAccount": "Create account"
+  },
+  "forgot": {
+    "title": "Recover password",
+    "backLogin": "Return to login",
+    "recover": "Send"
+  },
   "button": {
     "google": "Continue with Google",
     "apple": "Sign in with Apple"

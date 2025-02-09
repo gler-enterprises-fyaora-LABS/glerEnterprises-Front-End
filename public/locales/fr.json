@@ -3,7 +3,7 @@
   "welcomeMessage": "Bienvenue sur notre plateforme !",
   "register": "S'inscrire",
   "forgotPassword": "Mot de passe oublié",
-  "verifyEmail": "Vérifier l'email",
+  "verifyEmail": "Vérifiez votre e-mail",
   "termsAndConditions": "Conditions générales",
   "customer": "Client",
   "next": "Suivant",
@@ -17,6 +17,20 @@
     "signIn": "Se connecter",
     "newHere": "Nouveau ici ?",
     "createAccount": "Créer un compte"
+  },
+  "newPass": {
+    "title": "Définir un nouveau mot de passe",
+    "password": "Entrez votre nouveau mot de passe",
+    "confirmPassword": "Confirmez le mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "change": "Changer le mot de passe",
+    "newHere": "Nouveau ici ?",
+    "createAccount": "Créer un compte"
+  },
+  "forgot": {
+    "title": "Récupérer le mot de passe",
+    "backLogin": "Retour à la connexion",
+    "recover": "Envoyer"
   },
   "button": {
     "google": "Continuer avec Google",
