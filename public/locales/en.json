@@ -8,19 +8,24 @@
   "customer": "Customer",
   "next": "Next",
   "signUp": "Sign up",
-  "accountType": "Account Type",
+  "accountType": "Account type",
   "login": {
-    "title": "Sign in",
+    "title": "Log in here",
     "email": "Enter your email",
     "password": "Enter your password",
     "forgotPassword": "Forgot Password?",
     "signIn": "Sign In",
     "newHere": "New here?",
-    "createAccount": "Create account"
+    "createAccount": "Create account",
+    "registered": "Already registered?",
+    "login": "Login",
+    "accountAlready": "Already have an account?"
   },
   "button": {
     "google": "Continue with Google",
-    "apple": "Sign in with Apple"
+    "apple": "Sign in with Apple",
+    "individual": "Individual",
+    "business": "Business"
   },
   "alt": {
     "logo": "Company logo",

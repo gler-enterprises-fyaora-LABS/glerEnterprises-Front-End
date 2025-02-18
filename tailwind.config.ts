@@ -15,6 +15,7 @@ export default {
                 'neutral-300': '#79767D',
                 'neutral-500': '#EBF1FF',
                 'blue-neutral': '#1A78F2',
+                'neutral-black': '#12153A'
             },
             fontFamily: {
                 sans: ["Inter", "sans-serif", "Poppins"],

@@ -21,10 +21,12 @@ const RegisterCarousel = () => {
     return (
         <div className="w-full h-full text-center relative">
             {currentSlide === 1 && (
-                <div>
-                    <h3 className="text-3xl font-bold">{t("signUp")}</h3>
+                <div className="border-2 w-[450px] border-green-400">
+                    <h3 className="text-[34px] font-poppins text-neutral-black font-semibold ">{t("signUp")}</h3>
+                    <div className="mt-5">
+                        <h5 className="items-start text-base justify-start flex font-poppins font-semibold w-4/5 mx-auto">{t("accountType")}</h5>
+                    </div>
                     <div className="mt-16">
-                        <h5 className="text-xl font-medium w-4/5 mx-auto">{t("accountType")}</h5>
                         <div className="w-full h-52 bg-white rounded-[50px] flex justify-center items-center gap-8 mt-4">
                             <button
                                 className="w-36 h-16 border-2 border-blue-600 rounded-lg text-blue-600 font-normal hover:bg-blue-50"
