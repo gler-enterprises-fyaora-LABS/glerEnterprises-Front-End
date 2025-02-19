@@ -8,7 +8,7 @@ import "../../app/i18n";
 import AccountTypeButton from "@/components/AccountTypeButton";
 import NextButton from "@/components/NextButton";
 
-export default function Index() {
+export default function RegisterAccountIndividual() {
   const { t } = useTranslation();
   const router = useRouter();
   const [selectedAccountType, setSelectedAccountType] = useState<string | null>(null);
@@ -19,10 +19,8 @@ export default function Index() {
   };
 
   const handleNextButtonClick = () => {
-    if (selectedAccountType === 'customer') {
-      router.push('/register/country');
-    }else if (selectedAccountType === 'serviceProvider') {
-        router.push('/register/serviceProvider');
+    if (selectedAccountType) {
+      router.push(`/register/${selectedAccountType}`);
     }
   };
 

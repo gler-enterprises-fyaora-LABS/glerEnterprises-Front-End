@@ -4,11 +4,11 @@ import '@/styles/global.css';
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
-import "../../app/i18n";
+
 import AccountTypeButton from "@/components/AccountTypeButton";
 import NextButton from "@/components/NextButton";
 
-export default function Index() {
+export default function serviceProvider() {
   const { t } = useTranslation();
   const router = useRouter();
   const [selectedAccountType, setSelectedAccountType] = useState<string | null>(null);
@@ -19,10 +19,10 @@ export default function Index() {
   };
 
   const handleNextButtonClick = () => {
-    if (selectedAccountType === 'customer') {
+    if (selectedAccountType === 'button.individual') {
       router.push('/register/country');
-    }else if (selectedAccountType === 'serviceProvider') {
-        router.push('/register/serviceProvider');
+    } else if (selectedAccountType === 'button.business') {
+      router.push('/register/companyInfo');
     }
   };
 
@@ -76,14 +76,14 @@ export default function Index() {
         </div>
         <div className='mt-10 w-[342px] justify-evenly flex '>
           <AccountTypeButton
-            text={t("customer")}
-            isSelected={selectedAccountType === 'customer'}
-            onClick={() => handleAccountTypeButtonClick('customer')}
+            text={t("button.individual")}
+            isSelected={selectedAccountType === 'button.individual'}
+            onClick={() => handleAccountTypeButtonClick('button.individual')}
           />
           <AccountTypeButton
-            text={t("serviceProvider")}
-            isSelected={selectedAccountType === 'serviceProvider'}
-            onClick={() => handleAccountTypeButtonClick('serviceProvider')}
+            text={t("button.business")}
+            isSelected={selectedAccountType === 'button.business'}
+            onClick={() => handleAccountTypeButtonClick('button.business')}
           />
         </div>
         <div className='mt-8 md:mt-56'>
