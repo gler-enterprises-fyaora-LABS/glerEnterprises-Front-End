@@ -45,5 +45,8 @@
   "error": {
     "fillFields": "Please fill out user and password fields.",
     "invalidCredentials": "Invalid credentials or server error. Please try again."
+  },
+  "dashboard": {
+    "welcome": "This is where the dashboard will be created!"
   }
 }

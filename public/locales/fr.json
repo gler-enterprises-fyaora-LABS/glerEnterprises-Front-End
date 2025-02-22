@@ -45,5 +45,8 @@
   "error": {
     "fillFields": "Veuillez remplir les champs utilisateur et mot de passe.",
     "invalidCredentials": "Identifiants invalides ou erreur serveur. Veuillez réessayer."
+  },
+  "dashboard": {
+    "welcome": "C'est ici que le tableau de bord sera créé !"
   }
 }

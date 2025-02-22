@@ -4,7 +4,7 @@ import Image from "next/image";
 import AuthButton from "@/components/AuthButton";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import "@/app/i18n";
+import "@/i18n";
 import { Api } from "@/api/Api";
 
 type RecoverDTO = {

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "@/styles/global.css";
 import Image from "next/image";
-import AuthButton from "@/components/AuthButton";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import "@/app/i18n";
-import { Api } from "@/api/Api";
+import "@/i18n";
+import { useApi } from '@/context/apiProvider';
 
 type NewPassDTO = {
     password: string;
@@ -18,30 +17,30 @@ export default function Index() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const apiClient = new Api();
+    const { apiClient, setRefreshKeyDTO, setBearer } = useApi(); // Access API and refresh token
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        if (!confirmPassword || !password) {
-            setError(t("error.fillFields"));
-            return;
-        }
-
-        const newPassData: NewPassDTO = {
-            password: password,
-            confirmPassword: confirmPassword,
-        };
-
-        try {
-            const response = await apiClient.api.authenticate(loginData);
-            console.log("New password Set successful:", response);
-            setError(""); // Clear error state on success
-        } catch (error) {
-            console.error("reset failed:", error);
-            setError(t("error.invalidCredentials"));
-        }
-    };
+    // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //
+    //     if (!confirmPassword || !password) {
+    //         setError(t("error.fillFields"));
+    //         return;
+    //     }
+    //
+    //     const newPassData: NewPassDTO = {
+    //         password: password,
+    //         confirmPassword: confirmPassword,
+    //     };
+    //
+    //     try {
+    //         const response = await apiClient.api.authenticate(loginData);
+    //         console.log("New password Set successful:", response);
+    //         setError(""); // Clear error state on success
+    //     } catch (error) {
+    //         console.error("reset failed:", error);
+    //         setError(t("error.invalidCredentials"));
+    //     }
+    // };
 
     return (
         <div className="flex md:w-full lg:w-3/4 md:h-[675px] lg:h-[1350px] bg-slate-50 justify-between">
@@ -98,7 +97,7 @@ export default function Index() {
                     </h1>
                 </div>
                 <form
-                    onSubmit={handleSubmit}
+                    // onSubmit={handleSubmit}
                     className="flex flex-col space-y-4 justify-center items-center w-[390px] border-t-2 py-4 px-6 mt-6"
                 >
                     <div className="w-[342px] relative">

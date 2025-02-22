@@ -30,6 +30,11 @@ export interface AccountStatusDTO {
   username?: string;
   status?: boolean;
 }
+export interface AuthResponseDTO {
+  accessToken: string;     // The access token for authenticating requests
+  refreshToken: string;    // The refresh token for re-authentication
+  expiresIn?: number;      // Optional: Expiration time for the access token
+}
 
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, HeadersDefaults, ResponseType } from "axios";
 import axios from "axios";
@@ -76,11 +81,12 @@ export class HttpClient<SecurityDataType = unknown> {
   private format?: ResponseType;
 
   constructor({ securityWorker, secure, format, ...axiosConfig }: ApiConfig<SecurityDataType> = {}) {
-    this.instance = axios.create({ ...axiosConfig, baseURL: axiosConfig.baseURL || "http://54.80.121.181:8095" });
+    this.instance = axios.create({ ...axiosConfig, withCredentials: true, baseURL: axiosConfig.baseURL || "http://54.80.121.181:8095" });
     this.secure = secure;
     this.format = format;
     this.securityWorker = securityWorker;
   }
+
 
   public setSecurityData = (data: SecurityDataType | null) => {
     this.securityData = data;
@@ -182,7 +188,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request POST:/api/v1/auth/refresh
      */
     generateNewAccessKey: (data: RefreshKeyDTO, params: RequestParams = {}) =>
-      this.request<object, any>({
+      this.request<AuthResponseDTO, any>({
         path: `/api/v1/auth/refresh`,
         method: "POST",
         body: data,
@@ -198,13 +204,13 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request POST:/api/v1/auth/login
      */
     authenticate: (data: LoginDTO, params: RequestParams = {}) =>
-      this.request<object, any>({
-        path: `/api/v1/auth/login`,
-        method: "POST",
-        body: data,
-        type: ContentType.Json,
-        ...params,
-      }),
+        this.request<AuthResponseDTO, any>({ // Use AuthResponseDTO as the response type
+          path: `/api/v1/auth/login`,
+          method: "POST",
+          body: data,
+          type: ContentType.Json,
+          ...params,
+        }),
 
     /**
      * No description

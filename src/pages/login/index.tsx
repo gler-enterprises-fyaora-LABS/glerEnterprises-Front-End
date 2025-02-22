@@ -1,11 +1,13 @@
+'use client'
 import React, { useState } from "react";
 import "@/styles/global.css";
 import Image from "next/image";
 import AuthButton from "@/components/AuthButton";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import "@/app/i18n";
-import { Api } from "@/api/Api";
+import "@/i18n";
+import { useApi } from '@/context/apiProvider';
+import {useRouter} from "next/navigation";
 
 type LoginDTO = {
   username: string;
@@ -18,7 +20,8 @@ export default function Index() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const apiClient = new Api();
+  const { apiClient, setRefreshKeyDTO, setBearer } = useApi(); // Access API and refresh token
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,6 +39,11 @@ export default function Index() {
     try {
       const response = await apiClient.api.authenticate(loginData);
       console.log("Login successful:", response);
+      const refreshToken = response.data.refreshToken;
+      const accessToken = response.data.accessToken;
+      setBearer(accessToken);
+      setRefreshKeyDTO({ refreshToken }); // Update the refresh token in the ApiContext
+      router.push('/dashboard');
       setError(""); // Clear error state on success
     } catch (error) {
       console.error("Login failed:", error);
