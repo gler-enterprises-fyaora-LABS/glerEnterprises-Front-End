@@ -1,18 +1,22 @@
+'use client'
+
 import React, { useState } from 'react';
 import Image from "next/image";
 import '@/styles/global.css';
 import Link from "next/link";
+import '@/app/i18n';
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
-import "../../app/i18n";
 import AccountTypeButton from "@/components/AccountTypeButton";
 import NextButton from "@/components/NextButton";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
-export default function Index() {
+export default function serviceProvider() {
   const { t } = useTranslation();
   const router = useRouter();
   const [selectedAccountType, setSelectedAccountType] = useState<string | null>(null);
+  const [countryCode, setCountryCode] = useState<string>('+1');
+  const [mobileNumber, setMobileNumber] = useState<string>('');
 
   const handleAccountTypeButtonClick = (type: string) => {
     setSelectedAccountType(type);
@@ -20,16 +24,16 @@ export default function Index() {
   };
 
   const handleNextButtonClick = () => {
-    if (selectedAccountType === 'customer') {
+    if (selectedAccountType === 'button.individual') {
       router.push('/register/country');
-    }else if (selectedAccountType === 'serviceProvider') {
-        router.push('/register/serviceProvider');
+    } else if (selectedAccountType === 'button.business') {
+      router.push('/register/companyInfo');
     }
   };
 
   return (
     <div className="flex w-full md:h-[675px] bg-slate-50 min-h-screen justify-between">
-      <div className="hidden bg-neutral-500 md:block  w-full relative">
+      <div className="hidden bg-neutral-500 md:block  w-[1210px] relative">
         <Image
           src="/Frame 62678.png"
           alt={t("alt.logo")}
@@ -63,32 +67,35 @@ export default function Index() {
           className="w-[67.35px] h-[68.17px] mb-[10px] absolute left-[253px] top-[494px]"
         />
       </div>
-      <div className="pt-8 md:w-[1250px] w-full  flex flex-col items-center">
-      <div className="flex items-center justify-start justify- md:justify-start w-full">
-          <div className="ml-4 mr-28 md:mr-40"><MdKeyboardArrowLeft /></div>
-          <h5 className="text-[20px] md:ml-20 font-poppins font-semibold text-neutral-black">{t("accountType")}</h5>
+      <div className="pt-8 md:w-[760px] w-full flex flex-col items-center">
+        <div className="mb-10 flex items-center justify-start justify- md:justify-start w-full">
+          <div className="ml-4 mr-28 md:mr-48"><MdKeyboardArrowLeft /></div>
+          <h5 className="text-[20px] md:ml-20 font-poppins font-semibold text-neutral-black">{t("mobileNumber")}</h5>
         </div>
-        <Image
-            src="/Frame 62678.png"
-            alt={t("alt.logo")}
-            width={200}
-            height={200}
-            className="w-[186px] h-[182px] mt-9 mb-[10px] md:hidden top-[54px] left-[66px]"
-        />
-        <h3 className="text-[34px] mt-10 font-poppins text-neutral-black font-semibold ">{t("signUp")}</h3>
-        <div className="mt-5 w-[282px]">
-          <h5 className="items-start text-base justify-start flex font-poppins font-semibold w-4/5 mx-auto">{t("accountType")}</h5>
+        <div className="w-[342px] h-10 mt-3 mb-11"><h2 className="font-poppins text-center font-semibold text-[34px]">{t('signUp')}</h2></div>
+        <div className="w-[342px]">
+          <h1 className="font-poppins font-bold text-[32px] ">{t('mobileNumber')}</h1>
+          <p className="font-poppins text-[20px] mt-2 mb-6 font-normal leading-[25px] text-slate-400 tracking-[0.003em]">
+            {t("otp")}
+          </p>
         </div>
-        <div className='mt-10 w-[342px] justify-evenly flex '>
-          <AccountTypeButton
-            text={t("customer")}
-            isSelected={selectedAccountType === 'customer'}
-            onClick={() => handleAccountTypeButtonClick('customer')}
-          />
-          <AccountTypeButton
-            text={t("serviceProvider")}
-            isSelected={selectedAccountType === 'serviceProvider'}
-            onClick={() => handleAccountTypeButtonClick('serviceProvider')}
+        <div className="w-[342px] h-10 mt-9 mb-24 flex">
+          <select 
+            value={countryCode} 
+            onChange={(e) => setCountryCode(e.target.value)} 
+            className="p-2 border border-gray-300 rounded-[4px] mr-2"
+          >
+            <option value="+1">+1</option>
+            <option value="+44">+44</option>
+            <option value="+91">+91</option>
+          </select>
+          <input 
+            type="tel" 
+            placeholder={t('mobileNumber')} 
+            value={mobileNumber}
+            onChange={(e) => setMobileNumber(e.target.value)}
+            className="w-[277px] p-2 border border-gray-300 rounded-[4px]"
+            pattern="[0-9]*"
           />
         </div>
         <div className='mt-8 md:mt-56'>
@@ -97,14 +104,6 @@ export default function Index() {
             isAccountTypeButtonClicked={selectedAccountType !== null}
             onClick={handleNextButtonClick}
           />
-        </div>
-        <div className="w-[430px] md:hidden h-[65px] mt-[78px] flex items-center justify-center">
-          <Link href="/register" className="text-neutral-400">
-            {t("login.accountAlready")}
-          </Link>
-          <Link href="/register" className="text-blue-600 font-bold">
-            {t("login.login")}
-          </Link>
         </div>
       </div>
     </div>

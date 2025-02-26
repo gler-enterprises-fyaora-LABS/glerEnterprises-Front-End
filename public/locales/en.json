@@ -9,6 +9,9 @@
   "next": "Next",
   "signUp": "Sign up",
   "accountType": "Account type",
+  "country": "Country",
+  "mobileNumber": "Mobile number",
+  "otp": "A 6-digit One-Time-Password will sent as SMS to the below provided number.",
   "login": {
     "title": "Log in here",
     "email": "Enter your email",

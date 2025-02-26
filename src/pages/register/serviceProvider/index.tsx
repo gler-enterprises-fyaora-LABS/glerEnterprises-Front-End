@@ -69,11 +69,11 @@ export default function serviceProvider() {
           <h5 className="text-[20px] md:ml-20 font-poppins font-semibold text-neutral-black">{t("accountType")}</h5>
         </div>
         <Image
-          className="dark:invert md:hidden"
+          className="dark:invert md:hidden mt-9"
           src="/frame 62678.png"
           alt="Gler logo"
-          width={104}
-          height={104}
+          width={200}
+          height={200}
         />
         <h3 className="text-[34px] mt-10 font-poppins text-neutral-black font-semibold ">{t("signUp")}</h3>
         <div className="mt-5 w-[282px]">

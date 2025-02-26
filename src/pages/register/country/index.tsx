@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 import AccountTypeButton from "@/components/AccountTypeButton";
 import NextButton from "@/components/NextButton";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 export default function serviceProvider() {
   const { t } = useTranslation();
@@ -30,7 +31,7 @@ export default function serviceProvider() {
 
   return (
     <div className="flex w-full md:h-[675px] bg-slate-50 min-h-screen justify-between">
-      <div className="hidden bg-neutral-500 md:block  w-[790px] relative">
+      <div className="hidden bg-neutral-500 md:block  w-[1210px] relative">
         <Image
           src="/Frame 62678.png"
           alt={t("alt.logo")}
@@ -64,7 +65,29 @@ export default function serviceProvider() {
           className="w-[67.35px] h-[68.17px] mb-[10px] absolute left-[253px] top-[494px]"
         />
       </div>
-      <div className="pt-8 md:w-[650px] w-full  flex flex-col items-center">
+      <div className="pt-8 md:w-[760px] w-full flex flex-col items-center">
+        <div className="mb-10 flex items-center justify-start justify- md:justify-start w-full">
+          <div className="ml-4 mr-28 md:mr-48"><MdKeyboardArrowLeft /></div>
+          <h5 className="text-[20px] md:ml-20 font-poppins font-semibold text-neutral-black">{t("accountType")}</h5>
+        </div>
+        <div className="w-[342px] h-10 mt-3 mb-24"><h2 className="font-poppins text-center font-semibold text-[34px]">{t('signUp')}</h2></div>
+        <div className="w-[342px] h-10">
+          <h1 className="font-poppins font-bold text-[32px] ">{t('country')}</h1>
+        </div>
+        <div className="w-[342px] h-10 mt-3 mb-24">
+          <input 
+            type="text" 
+            placeholder={t('country')} 
+            className="w-full p-2 border-2 border-blue-600 rounded-md"
+          />
+        </div>
+        <div className='mt-8 md:mt-56'>
+          <NextButton
+            text={t('Next')}
+            isAccountTypeButtonClicked={selectedAccountType !== null}
+            onClick={handleNextButtonClick}
+          />
+        </div>
       </div>
     </div>
   );
