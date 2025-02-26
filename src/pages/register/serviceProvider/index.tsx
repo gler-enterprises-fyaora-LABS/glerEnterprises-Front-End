@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import '@/styles/global.css';
 import Link from "next/link";
+import '@/app/i18n';
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
-
 import AccountTypeButton from "@/components/AccountTypeButton";
 import NextButton from "@/components/NextButton";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 export default function serviceProvider() {
   const { t } = useTranslation();
@@ -63,8 +64,12 @@ export default function serviceProvider() {
         />
       </div>
       <div className="pt-8 md:w-[650px] w-full  flex flex-col items-center">
+        <div className="flex items-center justify-start justify- md:justify-start w-full">
+          <div className="ml-4 mr-28 md:mr-40"><MdKeyboardArrowLeft /></div>
+          <h5 className="text-[20px] md:ml-20 font-poppins font-semibold text-neutral-black">{t("accountType")}</h5>
+        </div>
         <Image
-          className="dark:invert"
+          className="dark:invert md:hidden"
           src="/frame 62678.png"
           alt="Gler logo"
           width={104}

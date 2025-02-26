@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import "../../app/i18n";
 import AccountTypeButton from "@/components/AccountTypeButton";
 import NextButton from "@/components/NextButton";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 export default function Index() {
   const { t } = useTranslation();
@@ -28,7 +29,7 @@ export default function Index() {
 
   return (
     <div className="flex w-full md:h-[675px] bg-slate-50 min-h-screen justify-between">
-      <div className="hidden bg-neutral-500 md:block  w-[790px] relative">
+      <div className="hidden bg-neutral-500 md:block  w-full relative">
         <Image
           src="/Frame 62678.png"
           alt={t("alt.logo")}
@@ -62,13 +63,17 @@ export default function Index() {
           className="w-[67.35px] h-[68.17px] mb-[10px] absolute left-[253px] top-[494px]"
         />
       </div>
-      <div className="pt-8 md:w-[650px] w-full  flex flex-col items-center">
+      <div className="pt-8 md:w-[1250px] w-full  flex flex-col items-center">
+      <div className="flex items-center justify-start justify- md:justify-start w-full">
+          <div className="ml-4 mr-28 md:mr-40"><MdKeyboardArrowLeft /></div>
+          <h5 className="text-[20px] md:ml-20 font-poppins font-semibold text-neutral-black">{t("accountType")}</h5>
+        </div>
         <Image
-          className="dark:invert"
-          src="/frame 62678.png"
-          alt="Gler logo"
-          width={104}
-          height={104}
+            src="/Frame 62678.png"
+            alt={t("alt.logo")}
+            width={200}
+            height={200}
+            className="w-[186px] h-[182px] mb-[10px] md:hidden top-[54px] left-[66px]"
         />
         <h3 className="text-[34px] mt-10 font-poppins text-neutral-black font-semibold ">{t("signUp")}</h3>
         <div className="mt-5 w-[282px]">

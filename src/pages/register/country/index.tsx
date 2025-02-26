@@ -1,10 +1,12 @@
+'use client'
+
 import React, { useState } from 'react';
 import Image from "next/image";
 import '@/styles/global.css';
 import Link from "next/link";
+import '@/app/i18n';
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
-
 import AccountTypeButton from "@/components/AccountTypeButton";
 import NextButton from "@/components/NextButton";
 
@@ -63,44 +65,6 @@ export default function serviceProvider() {
         />
       </div>
       <div className="pt-8 md:w-[650px] w-full  flex flex-col items-center">
-        <Image
-          className="dark:invert"
-          src="/frame 62678.png"
-          alt="Gler logo"
-          width={104}
-          height={104}
-        />
-        <h3 className="text-[34px] mt-10 font-poppins text-neutral-black font-semibold ">{t("signUp")}</h3>
-        <div className="mt-5 w-[282px]">
-          <h5 className="items-start text-base justify-start flex font-poppins font-semibold w-4/5 mx-auto">{t("accountType")}</h5>
-        </div>
-        <div className='mt-10 w-[342px] justify-evenly flex '>
-          <AccountTypeButton
-            text={t("button.individual")}
-            isSelected={selectedAccountType === 'button.individual'}
-            onClick={() => handleAccountTypeButtonClick('button.individual')}
-          />
-          <AccountTypeButton
-            text={t("button.business")}
-            isSelected={selectedAccountType === 'button.business'}
-            onClick={() => handleAccountTypeButtonClick('button.business')}
-          />
-        </div>
-        <div className='mt-8 md:mt-56'>
-          <NextButton
-            text={t('Next')}
-            isAccountTypeButtonClicked={selectedAccountType !== null}
-            onClick={handleNextButtonClick}
-          />
-        </div>
-        <div className="w-[430px] md:hidden h-[65px] mt-[78px] flex items-center justify-center">
-          <Link href="/register" className="text-neutral-400">
-            {t("login.accountAlready")}
-          </Link>
-          <Link href="/register" className="text-blue-600 font-bold">
-            {t("login.login")}
-          </Link>
-        </div>
       </div>
     </div>
   );
