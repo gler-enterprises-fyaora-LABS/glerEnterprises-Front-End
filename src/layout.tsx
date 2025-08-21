@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { ApiProvider } from "@/context/apiProvider";
 
 export const metadata: Metadata = {
     title: "Gler",
-    description: "Cleaning Service on demand",
+    description: "Your trusted network of cleaning pros.",
 };
 
 export default function RootLayout({
@@ -13,9 +12,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-        <body className="bg-gray-100 text-gray-800">
-            {children}
-        </body>
+        <body>{children}</body>
         </html>
     );
 }

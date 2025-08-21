@@ -2,40 +2,415 @@
 @tailwind components;
 @tailwind utilities;
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
-    --blue900: #6896D1;
-    --star100: #FFC73B;
-    --neutral100: #12153A;
-    --neutral200: #2B3641;
-    --neutral300: #4F6071;
-    --neutral400: #677582;
-    --neutral500: #88939D;
-    --grey600: #9FA7AF;
-    --grey700: #BCC2C8;
-    --grey800: #D3D8DD;
-    --grey900: #EAEEF3;
-    --grey950: #F4F7F9;
-    --black: #000000;
-    --white: #FFFFFF;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
+@layer base {
+    button,
+    input,
+    select,
+    textarea {
+        @apply appearance-none bg-transparent border-0 outline-none;
     }
 }
 
-body {
-    color: var(--neutral200);
-    background: var(--white);
-    font-family: Poppins, Arial, Helvetica, sans-serif;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .all-\[unset\] {
+        all: unset;
+    }
+}
+
+:root {
+    --artboard-shadow: 0px 4px 28px 0px rgba(18, 21, 58, 0.1);
+    --DS-blog-card: 0px 14px 24px -1px rgba(72, 101, 128, 0.14), 0px 0px 6px 0px
+    rgba(72, 101, 128, 0.07);
+    --DS-booking-selection: 0px 18px 28px 0px rgba(72, 101, 128, 0.18);
+    --DS-button: 0px 4px 12px -1px rgba(0, 0, 0, 0.12), 0px 2px 4px 0px
+    rgba(0, 0, 0, 0.08);
+    --DS-icon: 0px 14px 24px -1px rgba(18, 21, 58, 0.14), 0px 0px 6px 0px
+    rgba(18, 21, 58, 0.07);
+    --DS-navigation: 0px 8px 22px -2px rgba(73, 87, 106, 0.15);
+    --GLORIOUS-blue-100: rgba(26, 120, 242, 1);
+    --GLORIOUS-blue-900: rgba(104, 150, 209, 1);
+    --GLORIOUS-error-100: rgba(225, 27, 27, 1);
+    --GLORIOUS-error-200: rgba(202, 23, 23, 1);
+    --GLORIOUS-logo-brand-primary: rgba(26, 120, 242, 1);
+    --GLORIOUS-logo-brand-secondary: rgba(29, 44, 76, 1);
+    --GLORIOUS-logo-brand-stars: rgba(255, 199, 59, 1);
+    --GLORIOUS-neutral-100: rgba(18, 21, 58, 1);
+    --GLORIOUS-neutral-200: rgba(43, 54, 65, 1);
+    --GLORIOUS-neutral-300: rgba(79, 96, 113, 1);
+    --GLORIOUS-neutral-400: rgba(103, 117, 130, 1);
+    --GLORIOUS-neutral-500: rgba(136, 147, 157, 1);
+    --GLORIOUS-neutral-700: rgba(188, 194, 200, 1);
+    --GLORIOUS-neutral-800: rgba(211, 216, 221, 1);
+    --GLORIOUS-neutral-900: rgba(234, 238, 243, 1);
+    --GLORIOUS-neutral-950: rgba(244, 247, 249, 1);
+    --GLORIOUS-neutral-back: rgba(0, 0, 0, 1);
+    --GLORIOUS-neutral-white: rgba(255, 255, 255, 1);
+    --GLORIOUS-ui-section-bg: rgba(243, 248, 255, 1);
+    --header-of-steps-font-family: "Poppins", Helvetica;
+    --header-of-steps-font-size: 28px;
+    --header-of-steps-font-style: normal;
+    --header-of-steps-font-weight: 700;
+    --header-of-steps-letter-spacing: 0px;
+    --header-of-steps-line-height: 110.00000238418579%;
+    --m3-schemes-error: rgba(179, 38, 30, 1);
+    --m3-schemes-on-error: rgba(255, 255, 255, 1);
+    --m3-schemes-on-primary: rgba(255, 255, 255, 1);
+    --m3-schemes-on-primary-container: rgba(33, 0, 93, 1);
+    --m3-schemes-on-secondary: rgba(255, 255, 255, 1);
+    --m3-schemes-on-secondary-container: rgba(29, 25, 43, 1);
+    --m3-schemes-on-surface: rgba(29, 27, 32, 1);
+    --m3-schemes-on-surface-variant: rgba(73, 69, 79, 1);
+    --m3-schemes-outline: rgba(121, 116, 126, 1);
+    --m3-schemes-outline-variant: rgba(202, 196, 208, 1);
+    --m3-schemes-primary: rgba(101, 85, 143, 1);
+    --m3-schemes-primary-container: rgba(234, 221, 255, 1);
+    --m3-schemes-secondary-container: rgba(232, 222, 248, 1);
+    --m3-schemes-surface: rgba(254, 247, 255, 1);
+    --m3-schemes-surface-container-highest: rgba(230, 224, 233, 1);
+    --m3-state-layers-error-opacity-08: rgba(179, 38, 30, 0.08);
+    --m3-state-layers-error-opacity-12: rgba(179, 38, 30, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-08: rgba(29, 25, 43, 0.08);
+    --m3-state-layers-on-secondary-container-opacity-12: rgba(29, 25, 43, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-16: rgba(29, 25, 43, 0.16);
+    --m3-state-layers-on-surface-opacity-08: rgba(29, 27, 32, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(29, 27, 32, 0.12);
+    --m3-state-layers-on-surface-opacity-16: rgba(29, 27, 32, 0.16);
+    --m3-state-layers-on-surface-variant-opacity-08: rgba(73, 69, 79, 0.08);
+    --m3-state-layers-on-surface-variant-opacity-12: rgba(73, 69, 79, 0.12);
+    --m3-state-layers-primary-opacity-08: rgba(101, 85, 143, 0.08);
+    --m3-state-layers-primary-opacity-12: rgba(101, 85, 143, 0.12);
+    --m3-state-layers-surface-variant-opacity-12: rgba(231, 224, 236, 0.12);
+    --placeholder-font-family: "Poppins", Helvetica;
+    --placeholder-font-size: 16px;
+    --placeholder-font-style: normal;
+    --placeholder-font-weight: 400;
+    --placeholder-letter-spacing: 0px;
+    --placeholder-line-height: 139.9999976158142%;
+    --subtitle-gler-font-family: "Poppins", Helvetica;
+    --subtitle-gler-font-size: 24px;
+    --subtitle-gler-font-style: normal;
+    --subtitle-gler-font-weight: 600;
+    --subtitle-gler-letter-spacing: -0.48px;
+    --subtitle-gler-line-height: 120.00000476837158%;
+}
+
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-m3-mode="light">
+    <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-m3-mode="light"] {
+    --m3-schemes-error: rgba(179, 38, 30, 1);
+    --m3-schemes-on-error: rgba(255, 255, 255, 1);
+    --m3-schemes-on-primary: rgba(255, 255, 255, 1);
+    --m3-schemes-on-primary-container: rgba(33, 0, 93, 1);
+    --m3-schemes-on-secondary: rgba(255, 255, 255, 1);
+    --m3-schemes-on-secondary-container: rgba(29, 25, 43, 1);
+    --m3-schemes-on-surface: rgba(29, 27, 32, 1);
+    --m3-schemes-on-surface-variant: rgba(73, 69, 79, 1);
+    --m3-schemes-outline: rgba(121, 116, 126, 1);
+    --m3-schemes-outline-variant: rgba(202, 196, 208, 1);
+    --m3-schemes-primary: rgba(101, 85, 143, 1);
+    --m3-schemes-primary-container: rgba(234, 221, 255, 1);
+    --m3-schemes-secondary-container: rgba(232, 222, 248, 1);
+    --m3-schemes-surface: rgba(254, 247, 255, 1);
+    --m3-schemes-surface-container-highest: rgba(230, 224, 233, 1);
+    --m3-state-layers-error-opacity-08: rgba(179, 38, 30, 0.08);
+    --m3-state-layers-error-opacity-12: rgba(179, 38, 30, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-08: rgba(29, 25, 43, 0.08);
+    --m3-state-layers-on-secondary-container-opacity-12: rgba(29, 25, 43, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-16: rgba(29, 25, 43, 0.16);
+    --m3-state-layers-on-surface-opacity-08: rgba(29, 27, 32, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(29, 27, 32, 0.12);
+    --m3-state-layers-on-surface-opacity-16: rgba(29, 27, 32, 0.16);
+    --m3-state-layers-on-surface-variant-opacity-08: rgba(73, 69, 79, 0.08);
+    --m3-state-layers-on-surface-variant-opacity-12: rgba(73, 69, 79, 0.12);
+    --m3-state-layers-primary-opacity-08: rgba(101, 85, 143, 0.08);
+    --m3-state-layers-primary-opacity-12: rgba(101, 85, 143, 0.12);
+    --m3-state-layers-surface-variant-opacity-12: rgba(231, 224, 236, 0.12);
+}
+
+[data-m3-mode="light-high-contrast"] {
+    --m3-schemes-error: rgba(68, 15, 14, 1);
+    --m3-schemes-on-error: rgba(255, 255, 255, 1);
+    --m3-schemes-on-primary: rgba(255, 255, 255, 1);
+    --m3-schemes-on-primary-container: rgba(255, 255, 255, 1);
+    --m3-schemes-on-secondary: rgba(255, 255, 255, 1);
+    --m3-schemes-on-secondary-container: rgba(255, 255, 255, 1);
+    --m3-schemes-on-surface: rgba(0, 0, 0, 1);
+    --m3-schemes-on-surface-variant: rgba(37, 35, 43, 1);
+    --m3-schemes-outline: rgba(69, 65, 74, 1);
+    --m3-schemes-outline-variant: rgba(69, 65, 74, 1);
+    --m3-schemes-primary: rgba(39, 23, 78, 1);
+    --m3-schemes-primary-container: rgba(73, 57, 113, 1);
+    --m3-schemes-secondary-container: rgba(73, 57, 113, 1);
+    --m3-schemes-surface: rgba(253, 247, 255, 1);
+    --m3-schemes-surface-container-highest: rgba(230, 224, 233, 1);
+    --m3-state-layers-error-opacity-08: rgba(68, 15, 14, 0.08);
+    --m3-state-layers-error-opacity-12: rgba(68, 15, 14, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-08: rgba(255, 255, 255, 0.08);
+    --m3-state-layers-on-secondary-container-opacity-12: rgba(255, 255, 255, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-16: rgba(255, 255, 255, 0.16);
+    --m3-state-layers-on-surface-opacity-08: rgba(0, 0, 0, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(0, 0, 0, 0.12);
+    --m3-state-layers-on-surface-opacity-16: rgba(0, 0, 0, 0.16);
+    --m3-state-layers-on-surface-variant-opacity-08: rgba(37, 35, 43, 0.08);
+    --m3-state-layers-on-surface-variant-opacity-12: rgba(37, 35, 43, 0.12);
+    --m3-state-layers-primary-opacity-08: rgba(39, 23, 78, 0.08);
+    --m3-state-layers-primary-opacity-12: rgba(39, 23, 78, 0.12);
+    --m3-state-layers-surface-variant-opacity-12: rgba(231, 224, 235, 0.12);
+}
+
+[data-m3-mode="light-medium-contrast"] {
+    --m3-schemes-error: rgba(110, 47, 44, 1);
+    --m3-schemes-on-error: rgba(255, 255, 255, 1);
+    --m3-schemes-on-primary: rgba(255, 255, 255, 1);
+    --m3-schemes-on-primary-container: rgba(255, 255, 255, 1);
+    --m3-schemes-on-secondary: rgba(255, 255, 255, 1);
+    --m3-schemes-on-secondary-container: rgba(255, 255, 255, 1);
+    --m3-schemes-on-surface: rgba(29, 27, 32, 1);
+    --m3-schemes-on-surface-variant: rgba(69, 65, 74, 1);
+    --m3-schemes-outline: rgba(97, 93, 103, 1);
+    --m3-schemes-outline-variant: rgba(125, 121, 131, 1);
+    --m3-schemes-primary: rgba(73, 57, 113, 1);
+    --m3-schemes-primary-container: rgba(123, 107, 167, 1);
+    --m3-schemes-secondary-container: rgba(124, 107, 167, 1);
+    --m3-schemes-surface: rgba(253, 247, 255, 1);
+    --m3-schemes-surface-container-highest: rgba(230, 224, 233, 1);
+    --m3-state-layers-error-opacity-08: rgba(110, 47, 44, 0.08);
+    --m3-state-layers-error-opacity-12: rgba(110, 47, 44, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-08: rgba(255, 255, 255, 0.08);
+    --m3-state-layers-on-secondary-container-opacity-12: rgba(255, 255, 255, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-16: rgba(255, 255, 255, 0.16);
+    --m3-state-layers-on-surface-opacity-08: rgba(29, 27, 32, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(29, 27, 32, 0.12);
+    --m3-state-layers-on-surface-opacity-16: rgba(29, 27, 32, 0.16);
+    --m3-state-layers-on-surface-variant-opacity-08: rgba(69, 65, 74, 0.08);
+    --m3-state-layers-on-surface-variant-opacity-12: rgba(69, 65, 74, 0.12);
+    --m3-state-layers-primary-opacity-08: rgba(73, 57, 113, 0.08);
+    --m3-state-layers-primary-opacity-12: rgba(73, 57, 113, 0.12);
+    --m3-state-layers-surface-variant-opacity-12: rgba(231, 224, 235, 0.12);
+}
+
+[data-m3-mode="dark"] {
+    --m3-schemes-error: rgba(242, 184, 181, 1);
+    --m3-schemes-on-error: rgba(96, 20, 16, 1);
+    --m3-schemes-on-primary: rgba(56, 30, 114, 1);
+    --m3-schemes-on-primary-container: rgba(234, 221, 255, 1);
+    --m3-schemes-on-secondary: rgba(51, 45, 65, 1);
+    --m3-schemes-on-secondary-container: rgba(232, 222, 248, 1);
+    --m3-schemes-on-surface: rgba(230, 224, 233, 1);
+    --m3-schemes-on-surface-variant: rgba(202, 196, 208, 1);
+    --m3-schemes-outline: rgba(147, 143, 153, 1);
+    --m3-schemes-outline-variant: rgba(73, 69, 79, 1);
+    --m3-schemes-primary: rgba(208, 188, 254, 1);
+    --m3-schemes-primary-container: rgba(79, 55, 139, 1);
+    --m3-schemes-secondary-container: rgba(74, 68, 88, 1);
+    --m3-schemes-surface: rgba(20, 18, 24, 1);
+    --m3-schemes-surface-container-highest: rgba(54, 52, 59, 1);
+    --m3-state-layers-error-opacity-08: rgba(242, 184, 181, 0.08);
+    --m3-state-layers-error-opacity-12: rgba(242, 184, 181, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-08: rgba(232, 222, 248, 0.08);
+    --m3-state-layers-on-secondary-container-opacity-12: rgba(232, 222, 248, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-16: rgba(232, 222, 248, 0.16);
+    --m3-state-layers-on-surface-opacity-08: rgba(230, 224, 233, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(230, 224, 233, 0.12);
+    --m3-state-layers-on-surface-opacity-16: rgba(230, 224, 233, 0.16);
+    --m3-state-layers-on-surface-variant-opacity-08: rgba(202, 196, 208, 0.08);
+    --m3-state-layers-on-surface-variant-opacity-12: rgba(202, 196, 208, 0.12);
+    --m3-state-layers-primary-opacity-08: rgba(208, 188, 254, 0.08);
+    --m3-state-layers-primary-opacity-12: rgba(208, 188, 254, 0.12);
+    --m3-state-layers-surface-variant-opacity-12: rgba(73, 69, 79, 0.12);
+}
+
+[data-m3-mode="dark-high-contrast"] {
+    --m3-schemes-error: rgba(255, 249, 249, 1);
+    --m3-schemes-on-error: rgba(0, 0, 0, 1);
+    --m3-schemes-on-primary: rgba(0, 0, 0, 1);
+    --m3-schemes-on-primary-container: rgba(0, 0, 0, 1);
+    --m3-schemes-on-secondary: rgba(0, 0, 0, 1);
+    --m3-schemes-on-secondary-container: rgba(0, 0, 0, 1);
+    --m3-schemes-on-surface: rgba(255, 255, 255, 1);
+    --m3-schemes-on-surface-variant: rgba(255, 249, 255, 1);
+    --m3-schemes-outline: rgba(206, 200, 212, 1);
+    --m3-schemes-outline-variant: rgba(206, 200, 212, 1);
+    --m3-schemes-primary: rgba(255, 249, 255, 1);
+    --m3-schemes-primary-container: rgba(211, 193, 255, 1);
+    --m3-schemes-secondary-container: rgba(211, 193, 255, 1);
+    --m3-schemes-surface: rgba(20, 18, 24, 1);
+    --m3-schemes-surface-container-highest: rgba(54, 52, 58, 1);
+    --m3-state-layers-error-opacity-08: rgba(255, 249, 249, 0.08);
+    --m3-state-layers-error-opacity-12: rgba(255, 249, 249, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-08: rgba(0, 0, 0, 0.08);
+    --m3-state-layers-on-secondary-container-opacity-12: rgba(0, 0, 0, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-16: rgba(0, 0, 0, 0.16);
+    --m3-state-layers-on-surface-opacity-08: rgba(255, 255, 255, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(255, 255, 255, 0.12);
+    --m3-state-layers-on-surface-opacity-16: rgba(255, 255, 255, 0.16);
+    --m3-state-layers-on-surface-variant-opacity-08: rgba(255, 249, 255, 0.08);
+    --m3-state-layers-on-surface-variant-opacity-12: rgba(255, 249, 255, 0.12);
+    --m3-state-layers-primary-opacity-08: rgba(255, 249, 255, 0.08);
+    --m3-state-layers-primary-opacity-12: rgba(255, 249, 255, 0.12);
+    --m3-state-layers-surface-variant-opacity-12: rgba(73, 69, 78, 0.12);
+}
+
+[data-m3-mode="dark-medium-contrast"] {
+    --m3-schemes-error: rgba(255, 185, 179, 1);
+    --m3-schemes-on-error: rgba(51, 4, 5, 1);
+    --m3-schemes-on-primary: rgba(27, 9, 66, 1);
+    --m3-schemes-on-primary-container: rgba(0, 0, 0, 1);
+    --m3-schemes-on-secondary: rgba(27, 9, 66, 1);
+    --m3-schemes-on-secondary-container: rgba(0, 0, 0, 1);
+    --m3-schemes-on-surface: rgba(255, 249, 255, 1);
+    --m3-schemes-on-surface-variant: rgba(206, 200, 212, 1);
+    --m3-schemes-outline: rgba(166, 161, 171, 1);
+    --m3-schemes-outline-variant: rgba(134, 129, 139, 1);
+    --m3-schemes-primary: rgba(211, 193, 255, 1);
+    --m3-schemes-primary-container: rgba(152, 135, 197, 1);
+    --m3-schemes-secondary-container: rgba(152, 135, 197, 1);
+    --m3-schemes-surface: rgba(20, 18, 24, 1);
+    --m3-schemes-surface-container-highest: rgba(54, 52, 58, 1);
+    --m3-state-layers-error-opacity-08: rgba(255, 185, 179, 0.08);
+    --m3-state-layers-error-opacity-12: rgba(255, 185, 179, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-08: rgba(0, 0, 0, 0.08);
+    --m3-state-layers-on-secondary-container-opacity-12: rgba(0, 0, 0, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-16: rgba(0, 0, 0, 0.16);
+    --m3-state-layers-on-surface-opacity-08: rgba(255, 249, 255, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(255, 249, 255, 0.12);
+    --m3-state-layers-on-surface-opacity-16: rgba(255, 249, 255, 0.16);
+    --m3-state-layers-on-surface-variant-opacity-08: rgba(206, 200, 212, 0.08);
+    --m3-state-layers-on-surface-variant-opacity-12: rgba(206, 200, 212, 0.12);
+    --m3-state-layers-primary-opacity-08: rgba(211, 193, 255, 0.08);
+    --m3-state-layers-primary-opacity-12: rgba(211, 193, 255, 0.12);
+    --m3-state-layers-surface-variant-opacity-12: rgba(73, 69, 78, 0.12);
+}
+
+[data-m3-mode="monochrome-light"] {
+    --m3-schemes-error: rgba(179, 38, 30, 1);
+    --m3-schemes-on-error: rgba(255, 255, 255, 1);
+    --m3-schemes-on-primary: rgba(226, 226, 226, 1);
+    --m3-schemes-on-primary-container: rgba(255, 255, 255, 1);
+    --m3-schemes-on-secondary: rgba(255, 255, 255, 1);
+    --m3-schemes-on-secondary-container: rgba(27, 27, 27, 1);
+    --m3-schemes-on-surface: rgba(27, 27, 27, 1);
+    --m3-schemes-on-surface-variant: rgba(71, 71, 71, 1);
+    --m3-schemes-outline: rgba(119, 119, 119, 1);
+    --m3-schemes-outline-variant: rgba(198, 198, 198, 1);
+    --m3-schemes-primary: rgba(0, 0, 0, 1);
+    --m3-schemes-primary-container: rgba(59, 59, 59, 1);
+    --m3-schemes-secondary-container: rgba(212, 212, 212, 1);
+    --m3-schemes-surface: rgba(249, 249, 249, 1);
+    --m3-schemes-surface-container-highest: rgba(226, 226, 226, 1);
+    --m3-state-layers-error-opacity-08: rgba(179, 38, 30, 0.08);
+    --m3-state-layers-error-opacity-12: rgba(179, 38, 30, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-08: rgba(27, 27, 27, 0.08);
+    --m3-state-layers-on-secondary-container-opacity-12: rgba(27, 27, 27, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-16: rgba(27, 27, 27, 0.16);
+    --m3-state-layers-on-surface-opacity-08: rgba(27, 27, 27, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(27, 27, 27, 0.12);
+    --m3-state-layers-on-surface-opacity-16: rgba(27, 27, 27, 0.16);
+    --m3-state-layers-on-surface-variant-opacity-08: rgba(71, 71, 71, 0.08);
+    --m3-state-layers-on-surface-variant-opacity-12: rgba(71, 71, 71, 0.12);
+    --m3-state-layers-primary-opacity-08: rgba(0, 0, 0, 0.08);
+    --m3-state-layers-primary-opacity-12: rgba(0, 0, 0, 0.12);
+    --m3-state-layers-surface-variant-opacity-12: rgba(226, 226, 226, 0.12);
+}
+
+[data-m3-mode="monochrome-dark"] {
+    --m3-schemes-error: rgba(242, 184, 181, 1);
+    --m3-schemes-on-error: rgba(96, 20, 16, 1);
+    --m3-schemes-on-primary: rgba(26, 28, 28, 1);
+    --m3-schemes-on-primary-container: rgba(0, 0, 0, 1);
+    --m3-schemes-on-secondary: rgba(26, 28, 28, 1);
+    --m3-schemes-on-secondary-container: rgba(226, 226, 226, 1);
+    --m3-schemes-on-surface: rgba(226, 226, 226, 1);
+    --m3-schemes-on-surface-variant: rgba(198, 198, 198, 1);
+    --m3-schemes-outline: rgba(145, 145, 145, 1);
+    --m3-schemes-outline-variant: rgba(71, 71, 71, 1);
+    --m3-schemes-primary: rgba(255, 255, 255, 1);
+    --m3-schemes-primary-container: rgba(212, 212, 212, 1);
+    --m3-schemes-secondary-container: rgba(71, 71, 71, 1);
+    --m3-schemes-surface: rgba(19, 19, 19, 1);
+    --m3-schemes-surface-container-highest: rgba(53, 53, 53, 1);
+    --m3-state-layers-error-opacity-08: rgba(242, 184, 181, 0.08);
+    --m3-state-layers-error-opacity-12: rgba(242, 184, 181, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-08: rgba(226, 226, 226, 0.08);
+    --m3-state-layers-on-secondary-container-opacity-12: rgba(226, 226, 226, 0.12);
+    --m3-state-layers-on-secondary-container-opacity-16: rgba(226, 226, 226, 0.16);
+    --m3-state-layers-on-surface-opacity-08: rgba(226, 226, 226, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(226, 226, 226, 0.12);
+    --m3-state-layers-on-surface-opacity-16: rgba(226, 226, 226, 0.16);
+    --m3-state-layers-on-surface-variant-opacity-08: rgba(198, 198, 198, 0.08);
+    --m3-state-layers-on-surface-variant-opacity-12: rgba(198, 198, 198, 0.12);
+    --m3-state-layers-primary-opacity-08: rgba(255, 255, 255, 0.08);
+    --m3-state-layers-primary-opacity-12: rgba(255, 255, 255, 0.12);
+    --m3-state-layers-surface-variant-opacity-12: rgba(71, 71, 71, 0.12);
+}
+
+:root {
+    --animate-spin: spin 1s linear infinite;
+}
+
+.animate-shimmer {
+    animation: shimmer 8s infinite;
+}
+
+.animate-spin {
+    animation: var(--animate-spin);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes image-glow {
+    0% {
+        opacity: 0;
+        animation-timing-function: cubic-bezier(0.74, 0.25, 0.76, 1);
+    }
+
+    10% {
+        opacity: 0.7;
+        animation-timing-function: cubic-bezier(0.12, 0.01, 0.08, 0.99);
+    }
+
+    to {
+        opacity: 0.4;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
 }

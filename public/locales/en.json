@@ -18,6 +18,90 @@
     "newHere": "New here?",
     "createAccount": "Create account"
   },
+  "landing":{
+    "home": "Home",
+    "serviceProviders": "Service Providers",
+    "investors": "Investors",
+    "contactUs": "Contact Us",
+    "howItWorks": "HOW IT WORKS",
+    "requestBooking": "Request a Booking",
+    "requestBookingDescription": "Quickly request your desired service",
+    "getMatched": "Get Matched",
+    "getMatchedDescription": "We pair you with trusted professionals nearby",
+    "relaxAndReview": "Relax & Review",
+    "relaxAndReviewDescription": "Pay securely, track job status, & leave feedback",
+    "whatCanYouBook": "What Can You Book?",
+    "homeCleaning": "Home Cleaning",
+    "homeCleaningDescription": "General, Deep, End-of-Tenancy — for all property types.",
+    "bookPropertyCleaning": "Book Property Cleaning",
+    "carValet": "Car Valet",
+    "carValetDescription": "Interior & exterior cleaning for all vehicle sizes.",
+    "bookCarValetService": "Book Car Valet Service",
+    "carWash": "CAR WASH",
+    "windowCleaning": "Window Cleaning",
+    "windowCleaningDescription": "Streak-free results for homes or commercial spaces.",
+    "bookWindowCleaning": "Book Window Cleaning",
+    "contactGlerTeam": "Contact the GLER Team",
+    "contactGlerTeamDescription": "Reach out with questions, feedback, or partnership inquiries.",
+    "firstName": "First Name",
+    "enterFirstName": "Enter your Name",
+    "lastName": "Last Name",
+    "enterLastName": "Enter your Last Name",
+    "email": "E-mail*",
+    "enterEmail": "Enter your E-mail",
+    "yourMessage": "Your Message*",
+    "enterYourMessage": "Please enter your inquiry detailed",
+    "agreeToTerms": "I agree to the ",
+    "privacyPolicyAndTerms": "Privacy Policy & Terms",
+    "submit": "Submit",
+    "glerServices": "GLER Services",
+    "glerServicesDescription": "Connecting you with trusted professionals for all your cleaning needs.",
+    "footerContactUs": "Contact Us",
+    "footerEmail": "Email: info@gler.com",
+    "footerPhone": "Phone: +1 (555) 123-4567",
+    "followUs": "Follow Us",
+    "copyright": "© 2025 GLER Services. All rights reserved."
+  },
+  "benefits": {
+    "verified": "Verified, Experienced & Vetted Cleaning Professionals in your local area",
+    "noSearch": "No need to search – we do all the hard work for you!",
+    "convenient": "Convenient & hassle-free experience"
+  },
+  "benefitsProviders": {
+    "beYourOwnBoss": "Be Your Own Boss!",
+    "growingCustomerNetwork": "Growing Customer Network",
+    "getPaidOnTime": "Get Paid On Time, Every Time",
+    "communityTrust": "Community Based on Mutual Trust",
+    "competitiveRates": "Competitive Rates"
+  },
+  "benefitsInvestors": {
+    "industry": "Industry valued at $700B by 2030",
+    "scalable": "Scalable platform with global architecture",
+    "high": "High-trust ecosystem with verified providers",
+    "built": "Built-in social credit and community-first ethos",
+    "thorough": "Thorough onboarding with strict KYC"
+  },
+  "joinWaitlist": {
+    "header": {
+      "subtitle": "BOOK VETTED, EXPERIENCED CLEANERS IN YOUR AREA IN MINUTES.",
+      "title": "Get Early Access to Hassle-Free Cleaning"
+    },
+    "form": {
+      "email": {
+        "label": "Email Address*",
+        "placeholder": "Enter Your E-mail"
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "e.g. +123456789"
+      },
+      "postcode": {
+        "label": "Postcode",
+        "placeholder": "Enter Your Postcode"
+      },
+      "submit": "Join Waitlist"
+    }
+  },
   "newPass": {
     "title": "Set new password",
     "password": "Enter your new password",
