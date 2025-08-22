@@ -43,23 +43,23 @@ export const ContentWrapperSection = () => {
 
 
     return (
-        <section className="w-full items-center gap-16 p-20 bg-GLORIOUS-ui-section-bg flex flex-col relative flex-[0_0_auto]">
-            <div className="w-[1280px] gap-12 flex flex-col items-start relative flex-[0_0_auto]">
-                <header className="flex-col gap-2 flex items-center relative self-stretch w-full flex-[0_0_auto]">
-                    <h2 className="relative self-stretch mt-[-1.00px] [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-[42px] text-center tracking-[0] leading-[46.2px]">
+        <section className="w-full flex flex-col items-center gap-12 md:gap-16 px-4 py-10 md:p-20 bg-GLORIOUS-ui-section-bg relative">
+            <div className="w-full max-w-7xl flex flex-col items-start gap-8 md:gap-12 relative">
+                <header className="flex-col gap-2 flex items-center relative self-stretch w-full">
+                    <h2 className="relative self-stretch [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-3xl md:text-[42px] text-center tracking-[0] leading-tight md:leading-[46.2px]">
                         HOW IT WORKS
                     </h2>
                 </header>
             </div>
 
             <div
-                className="flex items-start gap-4 relative self-stretch w-full flex-[0_0_auto]"
+                className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-4 relative w-full max-w-7xl"
                 role="list"
             >
                 {steps.map((step) => (
                     <div
                         key={step.id}
-                        className="flex flex-col items-center gap-4 px-4 py-0 relative flex-1 grow"
+                        className="flex flex-col items-center gap-4 px-4 py-0 relative flex-1"
                         role="listitem"
                     >
                         <img className={step.imageClass} alt={step.alt} src={step.image.src} />

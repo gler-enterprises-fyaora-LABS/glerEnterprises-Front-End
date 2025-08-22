@@ -40,11 +40,11 @@ export const ContactFormSection = () => {
                 <div className="flex flex-col gap-2 items-start justify-start self-stretch shrink-0 relative">
                     <div className="flex flex-col gap-2 items-center justify-start self-stretch shrink-0 relative">
                         <div className="text-coolgray-90 text-left font-['Poppins-Bold',_sans-serif] text-[42px] leading-[110%] font-bold relative self-stretch">
-                            {t('landing.contactGlerTeam')}
+                            {t('home.contactGlerTeam')}
                         </div>
                     </div>
                     <div className="text-coolgray-90 text-left font-['Poppins-Regular',_sans-serif] text-lg leading-[140%] font-normal relative self-stretch">
-                        {t('landing.contactGlerTeamDescription')}
+                        {t('home.contactGlerTeamDescription')}
                     </div>
                 </div>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-start justify-start shrink-0 w-full max-w-md md:max-w-lg lg:max-w-xl relative">
@@ -52,7 +52,7 @@ export const ContactFormSection = () => {
                         <div className="flex flex-col gap-1 items-start justify-start flex-1 relative">
                             <div className="flex flex-col gap-2 items-start justify-start self-stretch shrink-0 relative">
                                 <label htmlFor="firstName" className="text-coolgray-90 text-left font-['Poppins-Regular',_sans-serif] text-sm leading-[140%] font-normal relative self-stretch">
-                                    {t('landing.firstName')}
+                                    {t('home.firstName')}
                                 </label>
                                 <div className="bg-coolgray-10 border-solid border-coolgray-30 border-b pt-3 pr-4 pb-3 pl-4 flex flex-row gap-2 items-center justify-start self-stretch shrink-0 h-12 relative">
                                     <input
@@ -61,7 +61,7 @@ export const ContactFormSection = () => {
                                         type="text"
                                         value={formData.firstName}
                                         onChange={handleInputChange}
-                                        placeholder={t('landing.enterFirstName')}
+                                        placeholder={t('home.enterFirstName')}
                                         className="text-coolgray-60 placeholder-coolgray-60 text-left font-['Poppins-Regular',_sans-serif] text-base leading-[140%] font-normal relative flex-1 bg-transparent focus:outline-none focus:text-coolgray-90"
                                     />
                                 </div>
@@ -70,7 +70,7 @@ export const ContactFormSection = () => {
                         <div className="flex flex-col gap-1 items-start justify-start flex-1 relative">
                             <div className="flex flex-col gap-2 items-start justify-start self-stretch shrink-0 relative">
                                 <label htmlFor="lastName" className="text-coolgray-90 text-left font-['Poppins-Regular',_sans-serif] text-sm leading-[140%] font-normal relative self-stretch">
-                                    {t('landing.lastName')}
+                                    {t('home.lastName')}
                                 </label>
                                 <div className="bg-coolgray-10 border-solid border-coolgray-30 border-b pt-3 pr-4 pb-3 pl-4 flex flex-row gap-2 items-center justify-start self-stretch shrink-0 h-12 relative">
                                     <input
@@ -79,7 +79,7 @@ export const ContactFormSection = () => {
                                         type="text"
                                         value={formData.lastName}
                                         onChange={handleInputChange}
-                                        placeholder={t('landing.enterLastName')}
+                                        placeholder={t('home.enterLastName')}
                                         className="text-coolgray-60 placeholder-coolgray-60 text-left font-['Poppins-Regular',_sans-serif] text-base leading-[140%] font-normal relative flex-1 bg-transparent focus:outline-none focus:text-coolgray-90"
                                     />
                                 </div>
@@ -89,7 +89,7 @@ export const ContactFormSection = () => {
                     <div className="flex flex-col gap-1 items-start justify-start self-stretch shrink-0 relative">
                         <div className="flex flex-col gap-2 items-start justify-start self-stretch shrink-0 relative">
                              <label htmlFor="email" className="text-coolgray-90 text-left font-['Poppins-Regular',_sans-serif] text-sm leading-[140%] font-normal relative self-stretch">
-                                {t('landing.email')}
+                                {t('home.email')}
                             </label>
                             <div className="bg-coolgray-10 border-solid border-coolgray-30 border-b pt-3 pr-4 pb-3 pl-4 flex flex-row gap-2 items-center justify-start self-stretch shrink-0 h-12 relative">
                                 <input
@@ -99,7 +99,7 @@ export const ContactFormSection = () => {
                                     required
                                     value={formData.email}
                                     onChange={handleInputChange}
-                                    placeholder={t('landing.enterEmail')}
+                                    placeholder={t('home.enterEmail')}
                                     className="text-coolgray-60 placeholder-coolgray-60 text-left font-['Poppins-Regular',_sans-serif] text-base leading-[140%] font-normal relative flex-1 bg-transparent focus:outline-none focus:text-coolgray-90"
                                 />
                             </div>
@@ -108,7 +108,7 @@ export const ContactFormSection = () => {
                     <div className="flex flex-col gap-1 items-start justify-start self-stretch shrink-0 relative">
                         <div className="flex flex-col gap-2 items-start justify-start self-stretch shrink-0 relative">
                             <label htmlFor="message" className="text-coolgray-90 text-left font-['Poppins-Regular',_sans-serif] text-sm leading-[140%] font-normal relative self-stretch">
-                                {t('landing.yourMessage')}
+                                {t('home.yourMessage')}
                             </label>
                             <div className="bg-coolgray-10 border-solid border-coolgray-30 border-b pt-3.5 pr-4 pb-3.5 pl-4 flex flex-row gap-2 items-start justify-start self-stretch shrink-0 h-24 relative">
                                 <textarea
@@ -117,7 +117,7 @@ export const ContactFormSection = () => {
                                     required
                                     value={formData.message}
                                     onChange={handleInputChange}
-                                    placeholder={t('landing.enterYourMessage')}
+                                    placeholder={t('home.enterYourMessage')}
                                     className="text-coolgray-60 placeholder-coolgray-60 text-left font-['Poppins-Regular',_sans-serif] text-base leading-[140%] font-normal relative flex-1 bg-transparent focus:outline-none focus:text-coolgray-90 resize-none"
                                 />
                             </div>
@@ -133,14 +133,14 @@ export const ContactFormSection = () => {
                         />
                         <label htmlFor="terms">
                             <span className="i-agree-to-the-privacy-policy-terms-span">
-                                {t('landing.agreeToTerms')}{' '}
+                                {t('home.agreeToTerms')}{' '}
                             </span>
                             <button
                                 type="button"
                                 onClick={() => setIsDialogOpen(true)}
                                 className="text-blue-600 hover:underline"
                             >
-                                {t('landing.privacyPolicyAndTerms')}
+                                {t('home.privacyPolicyAndTerms')}
                             </button>
                             <span>.</span>
                         </label>
@@ -156,7 +156,7 @@ export const ContactFormSection = () => {
                             style={{ letterSpacing: "0.5px" }}
                             disabled={!agreedToTerms || !formData.email || !formData.message}
                         >
-                            {t('landing.submit')}
+                            {t('home.submit')}
                         </button>
                     </div>
                 </form>

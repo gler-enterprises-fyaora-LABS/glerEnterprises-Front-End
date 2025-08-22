@@ -20,6 +20,22 @@
     }
 }
 
+html, body, #__next {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+@layer base {
+    button,
+    input,
+    select,
+    textarea {
+        @apply appearance-none bg-transparent border-0 outline-none;
+    }
+}
+
 :root {
     --artboard-shadow: 0px 4px 28px 0px rgba(18, 21, 58, 0.1);
     --DS-blog-card: 0px 14px 24px -1px rgba(72, 101, 128, 0.14), 0px 0px 6px 0px
@@ -96,18 +112,6 @@
     --subtitle-gler-letter-spacing: -0.48px;
     --subtitle-gler-line-height: 120.00000476837158%;
 }
-
-/*
-
-To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
-
-<body data-m3-mode="light">
-    <!-- the rest of your content -->
-</body>
-
-You can apply the theme on any DOM node, not just the `body`
-
-*/
 
 [data-m3-mode="light"] {
     --m3-schemes-error: rgba(179, 38, 30, 1);

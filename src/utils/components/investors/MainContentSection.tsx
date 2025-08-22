@@ -9,8 +9,6 @@ export const MainContentSection = () => {
     });
     const { t } = useTranslation();
 
-    const [isServicesOpen, setIsServicesOpen] = useState(false);
-
     const benefits = [
         {id: "industry", title: "benefitsInvestors.industry"},
         {id: "scalable", title: "benefitsInvestors.scalable"},
@@ -26,13 +24,6 @@ export const MainContentSection = () => {
         }));
     };
 
-    const handleVendorTypeChange = (type: string) => {
-        setFormData((prev) => ({
-            ...prev,
-            vendorType: type,
-        }));
-    };
-
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         console.log("Form submitted:", formData);
@@ -41,27 +32,44 @@ export const MainContentSection = () => {
     const buttonBaseClasses = "flex h-12 items-center justify-center rounded-full px-8 font-poppins text-base font-medium shadow-[1px_1px_3px_rgba(0,0,0,0.1),_5px_3px_6px_rgba(0,0,0,0.09),_10px_8px_8px_rgba(0,0,0,0.05),_18px_13px_9px_rgba(0,0,0,0.01),_29px_21px_10px_rgba(0,0,0,0)] transition-all duration-300 ease-in-out hover:opacity-90";
 
     return (
-        <section className="flex w-[1440px] items-center gap-20 pt-16 pb-20 px-20 relative flex-[0_0_auto]">
-            <div className="flex flex-col w-[655px] items-start justify-center gap-16 px-0 py-8 relative">
-                <div className="items-start gap-12 self-stretch w-full flex flex-col relative flex-[0_0_auto]">
-                    <header className="flex flex-col items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
-                        <p className="relative self-stretch mt-[-1.00px] [font-family:'Roboto-Bold',Helvetica] font-bold text-primary-90 text-xl tracking-[1.00px] leading-5">
-                            GET IN EARLY. GROW WITH THE NEXT BIG PLATFORM
-                        </p>
-                        <h1 className="relative self-stretch [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-[54px] tracking-[0] leading-[59.4px]">
-                            Invest in Our Global Cleaning Community
-                        </h1>
-                    </header>
+        <section className="flex flex-col w-full items-center justify-center gap-8 lg:gap-12 pt-16 pb-20 px-4 sm:px-8 md:px-20">
+            <header className="flex flex-col items-center gap-2 w-full max-w-7xl">
+                <p className="relative self-stretch [font-family:'Roboto-Bold',Helvetica] font-bold text-primary-90 text-lg md:text-xl text-center tracking-[1.00px] leading-5">
+                    GET IN EARLY. GROW WITH THE NEXT BIG PLATFORM
+                </p>
+                <h1 className="relative self-stretch [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-4xl md:text-[54px] text-center tracking-[0] leading-tight md:leading-[59.4px]">
+                    Invest in Our Global Cleaning Community
+                </h1>
+            </header>
 
+            <div className="flex flex-col lg:flex-row w-full max-w-7xl items-start justify-center gap-8 lg:gap-20">
+                <aside className="flex flex-col w-full lg:w-[545px] items-center justify-center gap-4 relative bg-variable-collection-bg p-4 rounded-lg">
+                    <div className="flex flex-col h-full items-center justify-center gap-4 self-stretch w-full">
+                        {benefits.map((benefit) => (
+                            <div className="flex items-center gap-4 p-4 relative self-stretch w-full" key={benefit.id}>
+                                <img
+                                    className="relative w-12 h-12"
+                                    alt="Green check"
+                                    src="/greenCheck.svg"
+                                />
+                                <p className="flex-1 [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-xl md:text-2xl tracking-[0] leading-tight md:leading-[26.4px]">
+                                    {t(benefit.title)}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </aside>
+
+                <div className="flex flex-col w-full lg:w-[655px] items-start justify-center">
                     <form
                         onSubmit={handleSubmit}
                         className="flex flex-col items-start gap-6 relative self-stretch w-full"
                     >
-                        <div className="flex flex-col w-[655px] items-start gap-1 relative flex-[0_0_auto]">
-                            <div className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="flex flex-col w-full items-start gap-1 relative">
+                            <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
                                 <label
                                     htmlFor="email"
-                                    className="relative self-stretch mt-[-1.00px] [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-2xl tracking-[-0.48px] leading-[28.8px]"
+                                    className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]"
                                 >
                                     Email Address*
                                 </label>
@@ -80,11 +88,11 @@ export const MainContentSection = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col w-[655px] items-start gap-1 relative flex-[0_0_auto]">
-                            <div className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="flex flex-col w-full items-start gap-1 relative">
+                            <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
                                 <label
-                                    htmlFor="phone"
-                                    className="relative self-stretch mt-[-1.00px] [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-2xl tracking-[-0.48px] leading-[28.8px]"
+                                    htmlFor="name"
+                                    className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]"
                                 >
                                     Company Name / Full Name*
                                 </label>
@@ -92,7 +100,7 @@ export const MainContentSection = () => {
                                 <div className="flex h-12 items-center gap-2 px-4 py-3 relative self-stretch w-full bg-[#f3f8ff] border-b [border-bottom-style:solid] border-[#c1c7cd]">
                                     <input
                                         id="name"
-                                        type="tel"
+                                        type="text"
                                         value={formData.name}
                                         onChange={(e) => handleInputChange("name", e.target.value)}
                                         placeholder="Enter Your Company Name / Full Name"
@@ -103,22 +111,22 @@ export const MainContentSection = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col w-[655px] items-start gap-1 relative flex-[0_0_auto]">
-                            <div className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
+                        <div className="flex flex-col w-full items-start gap-1 relative">
+                            <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
                                 <label
-                                    htmlFor="postcode"
-                                    className="relative self-stretch mt-[-1.00px] [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-2xl tracking-[-0.48px] leading-[28.8px]"
+                                    htmlFor="phone"
+                                    className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]"
                                 >
                                     Phone Number*
                                 </label>
 
                                 <div className="flex h-12 items-center gap-2 px-4 py-3 relative self-stretch w-full bg-[#f3f8ff] border-b [border-bottom-style:solid] border-variable-collection-stroke">
                                     <input
-                                        id="postcode"
-                                        type="text"
+                                        id="phone"
+                                        type="tel"
                                         value={formData.phone}
                                         onChange={(e) =>
-                                            handleInputChange("postcode", e.target.value)
+                                            handleInputChange("phone", e.target.value)
                                         }
                                         placeholder="e.g. +123456789"
                                         required
@@ -137,25 +145,6 @@ export const MainContentSection = () => {
                     </form>
                 </div>
             </div>
-
-            <aside className="flex flex-col w-[545px] h-[767px] items-center justify-center gap-4 relative bg-variable-collection-bg">
-                <div className="flex flex-col h-[571px] items-center justify-between relative self-stretch w-full">
-                    {benefits.map((benefit) => (
-                        <div className="flex flex-col items-center gap-4 p-4 relative self-stretch w-full flex-[0_0_auto]" key={benefit.id}>
-                            <div className="flex items-center gap-4 self-stretch w-full">
-                                <img
-                                    className="relative w-[48px] h-[48px]"
-                                    alt="Optional field indicator"
-                                    src="/greenCheck.svg"
-                                />
-                                <p className="flex-1 [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-2xl tracking-[0] leading-[26.4px]">
-                                    {t(benefit.title)}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </aside>
         </section>
     );
 };

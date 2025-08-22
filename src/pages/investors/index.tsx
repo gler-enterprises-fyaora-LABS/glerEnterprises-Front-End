@@ -1,7 +1,7 @@
 import React, {JSX} from "react";
 import { ContactFormSection } from "@/utils/components/ContactFormSection";
 import { ContentWrapperSection } from "@/utils/components/investors/ContentWrapperSection";
-import { LogoSection } from "@/utils/components/LogoSection";
+import { Footer } from "@/utils/components/Footer";
 import { MainContentSection } from "@/utils/components/investors/MainContentSection";
 import { NavigationBarSection } from "@/utils/components/NavigationBarSection";
 
@@ -12,7 +12,7 @@ const ServiceProviders = (): JSX.Element => {
             <MainContentSection />
             <ContentWrapperSection />
             <ContactFormSection />
-            <LogoSection />
+            <Footer />
         </div>
     );
 };
