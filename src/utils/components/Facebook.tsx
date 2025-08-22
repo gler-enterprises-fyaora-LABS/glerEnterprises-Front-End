@@ -5,5 +5,5 @@ interface IconProps {
 }
 
 export const Facebook: React.FC<IconProps> = ({ className }) => {
-    return <img src="/facebook.svg" alt="Facebook logo" className={className} />;
+    return <img src="/Facebook.svg" alt="Facebook logo" className={className} />;
 };
