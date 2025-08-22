@@ -5,6 +5,7 @@ import { Linkedin } from "./Linkedin";
 import { Twitter } from "./Twitter";
 import { Youtube } from "./Youtube";
 import gler from "../../../public/gler.svg";
+import Link from "next/link";
 
 export const Footer = () => {
     const socialMediaLinks = [
@@ -16,19 +17,21 @@ export const Footer = () => {
     ];
 
     const navigationLinks = [
-        { text: "Customers", href: "#customers" },
-        { text: "Service Providers", href: "#service-providers" },
-        { text: "Investors", href: "#investors" },
+        { text: "Customers", href: "/" },
+        { text: "Service Providers", href: "/service-providers" },
+        { text: "Investors", href: "/investors" },
     ];
 
     return (
         <footer className="flex w-full flex-col items-center gap-8 bg-[#fcfdff] px-4 py-12 shadow-[0px_-4px_4px_#00000040] sm:px-8 md:px-20">
             <div className="flex w-full max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
-                <img
-                    className="h-[50px] w-[59px]"
-                    alt="Gler logo"
-                    src={gler.src}
-                />
+                <Link href="/">
+                    <img
+                        className="h-[50px] w-[59px]"
+                        alt="Gler logo"
+                        src={gler.src}
+                    />
+                </Link>
                 <nav
                     className="flex flex-wrap items-center justify-center gap-4"
                     aria-label="Social media links"
@@ -57,7 +60,7 @@ export const Footer = () => {
                     aria-label="Footer navigation"
                 >
                     {navigationLinks.map(({ text, href }, index) => (
-                        <a
+                        <Link
                             key={index}
                             href={href}
                             className="inline-flex items-center gap-2 px-2 py-3 transition-opacity duration-200 hover:opacity-70"
@@ -65,7 +68,7 @@ export const Footer = () => {
                             <span className="whitespace-nowrap font-['Poppins-Medium',Helvetica] text-base font-medium leading-4 tracking-[0] text-[#0a0b0c]">
                                 {text}
                             </span>
-                        </a>
+                        </Link>
                     ))}
                 </nav>
             </div>
