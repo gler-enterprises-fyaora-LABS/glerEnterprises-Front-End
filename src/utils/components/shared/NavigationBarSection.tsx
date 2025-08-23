@@ -94,6 +94,9 @@ export const NavigationBarSection = () => {
                     <button onClick={() => changeLanguage('fr')} className="p-0 border-0 bg-transparent cursor-pointer">
                         <img src="/fr.png" alt="Français" className="w-8 h-8 rounded-full" />
                     </button>
+                    <button onClick={() => changeLanguage('ro')} className="p-0 border-0 bg-transparent cursor-pointer">
+                        <img src="/ro.png" alt="Français" className="w-8 h-8 rounded-full" />
+                    </button>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -154,6 +157,9 @@ export const NavigationBarSection = () => {
                             </button>
                             <button onClick={() => { changeLanguage('fr'); setIsMobileMenuOpen(false); }} className="p-0 border-0 bg-transparent cursor-pointer">
                                 <img src="/fr.png" alt="Français" className="w-8 h-8 rounded-full" />
+                            </button>
+                            <button onClick={() => { changeLanguage('ro'); setIsMobileMenuOpen(false); }} className="p-0 border-0 bg-transparent cursor-pointer">
+                                <img src="/ro.png" alt="Français" className="w-8 h-8 rounded-full" />
                             </button>
                         </li>
                     </ul>

@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import en from '../public/locales/en.json';
 import fr from '../public/locales/fr.json';
+import ro from '../public/locales/ro.json';
 
 // Initialize i18next
 i18n
@@ -18,6 +19,9 @@ i18n
             },
             fr: {
                 common: fr, // Using ES6 imports
+            },
+            ro: {
+                common: ro, // Using ES6 imports
             },
         },
         ns: ["common"], // Define namespaces (e.g., "common")
