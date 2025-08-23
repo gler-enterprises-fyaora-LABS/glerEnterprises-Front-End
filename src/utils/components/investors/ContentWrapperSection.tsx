@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import registerInterest from "../../../../public/registerInterest.svg";
 import freepikAdjust from "../../../../public/freepikAdjust.svg";
 import freepikBackground from "../../../../public/freepikBackground.svg";
 import growingCuate from "../../../../public/growingCuate.svg";
 
-export const ContentWrapperSection = () => {
+export const ContentWrapperSection = memo(() => {
     const steps = [
         {
             id: 1,
@@ -76,4 +76,6 @@ export const ContentWrapperSection = () => {
             </div>
         </section>
     );
-};
+});
+
+ContentWrapperSection.displayName = "ContentWrapperSection";

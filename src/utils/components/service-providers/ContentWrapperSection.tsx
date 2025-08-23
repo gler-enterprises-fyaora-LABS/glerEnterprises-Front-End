@@ -1,41 +1,44 @@
-import React from "react";
+import React, { memo } from "react";
 import SignUp from "../../../../public/SignUp.svg";
 import female from "../../../../public/female.svg";
 import jobHunt from "../../../../public/jobHunt.svg";
 import calendarGuy from "../../../../public/calendarGuy.svg";
+import { useTranslation } from "react-i18next";
 
-export const ContentWrapperSection = () => {
+export const ContentWrapperSection = memo(() => {
+    const { t } = useTranslation();
+
     const steps = [
         {
             id: 1,
             image: SignUp,
             alt: "Element",
-            title: "Sign Up & Set Profile",
-            description: "Tell us where you operate and what you offer",
+            title: t("joinWaitlistServiceProviders.steps.signUp.title"),
+            description: t("joinWaitlistServiceProviders.steps.signUp.description"),
             imageClass: "relative w-[90px] h-[90px] aspect-[1]",
         },
         {
             id: 2,
             image: female,
             alt: "Frame",
-            title: "Complete Verification",
-            description: "We'll guide you through GLER's best practices and H&S",
+            title: t("joinWaitlistServiceProviders.steps.verification.title"),
+            description: t("joinWaitlistServiceProviders.steps.verification.description"),
             imageClass: "relative w-[90px] h-[90px]",
         },
         {
             id: 3,
             image: jobHunt,
             alt: "Job hunt amico",
-            title: "Get Jobs in Your Area",
-            description: "Start receiving and accepting bookings",
+            title: t("joinWaitlistServiceProviders.steps.getJobs.title"),
+            description: t("joinWaitlistServiceProviders.steps.getJobs.description"),
             imageClass: "relative w-[90px] h-[90px] aspect-[1]",
         },
         {
             id: 4,
             image: calendarGuy,
             alt: "Group",
-            title: "Get Paid",
-            description: "Transparent, timely payments for every completed job",
+            title: t("joinWaitlistServiceProviders.steps.getPaid.title"),
+            description: t("joinWaitlistServiceProviders.steps.getPaid.description"),
             imageClass: "relative w-[142.38px] h-[90px] aspect-[1.58]",
         },
     ];
@@ -45,7 +48,7 @@ export const ContentWrapperSection = () => {
             <div className="w-full max-w-7xl flex flex-col items-start gap-8 md:gap-12 relative">
                 <header className="flex-col gap-2 flex items-center relative self-stretch w-full">
                     <h2 className="relative self-stretch [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-3xl md:text-[42px] text-center tracking-[0] leading-tight md:leading-[46.2px]">
-                        HOW IT WORKS
+                        {t("home.howItWorks")}
                     </h2>
                 </header>
             </div>
@@ -74,4 +77,6 @@ export const ContentWrapperSection = () => {
             </div>
         </section>
     );
-};
+});
+
+ContentWrapperSection.displayName = "ContentWrapperSection";

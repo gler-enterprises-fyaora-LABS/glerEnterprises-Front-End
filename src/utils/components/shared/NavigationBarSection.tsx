@@ -5,18 +5,30 @@ import "@/i18n";
 import { useTranslation } from "react-i18next";
 
 export const NavigationBarSection = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const pathname = usePathname();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navigationItems = [
-        { label: "Home", href: "/" },
+        { label: "home.home", href: "/" },
         {
-            label: "Service Providers",
+            label: "home.serviceProviders",
             href: "/service-providers",
         },
-        { label: "Investors", href: "/investors" },
+        { label: "home.investors", href: "/investors" },
     ];
+
+    const handleContactClick = () => {
+        const contactSection = document.getElementById("contact-us");
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: "smooth" });
+        }
+        setIsMobileMenuOpen(false);
+    };
+
+    const changeLanguage = (lng: string) => {
+        i18n.changeLanguage(lng);
+    };
 
     return (
         <nav
@@ -56,7 +68,7 @@ export const NavigationBarSection = () => {
                                             isActive ? "font-bold" : "font-medium"
                                         }`}
                                     >
-                                        {item.label}
+                                        {t(item.label)}
                                     </span>
                                 </Link>
                             </li>
@@ -64,16 +76,23 @@ export const NavigationBarSection = () => {
                     })}
                 </ul>
 
-                {/* Desktop Contact Us Button */}
-                <div className="hidden md:flex items-center justify-end">
+                {/* Desktop Right side: Contact Us & Language Buttons */}
+                <div className="hidden md:flex items-center justify-end gap-4">
                     <button
                         type="button"
+                        onClick={handleContactClick}
                         className="flex h-12 items-center justify-center rounded-full bg-blue-600 px-8 font-poppins text-base font-medium text-white
                             shadow-[1px_1px_3px_rgba(0,0,0,0.1),_5px_3px_6px_rgba(0,0,0,0.09),_10px_8px_8px_rgba(0,0,0,0.05),_18px_13px_9px_rgba(0,0,0,0.01),_29px_21px_10px_rgba(0,0,0,0)] transition-opacity hover:opacity-90"
                         style={{ letterSpacing: "0.5px" }}
                         aria-label="Contact Us"
                     >
                         {t("home.contactUs")}
+                    </button>
+                    <button onClick={() => changeLanguage('en')} className="p-0 border-0 bg-transparent cursor-pointer">
+                        <img src="/gb.png" alt="English" className="w-8 h-8 rounded-full" />
+                    </button>
+                    <button onClick={() => changeLanguage('fr')} className="p-0 border-0 bg-transparent cursor-pointer">
+                        <img src="/fr.png" alt="Français" className="w-8 h-8 rounded-full" />
                     </button>
                 </div>
 
@@ -113,7 +132,7 @@ export const NavigationBarSection = () => {
                                         aria-current={isActive ? "page" : undefined}
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
-                                        {item.label}
+                                        {t(item.label)}
                                     </Link>
                                 </li>
                             );
@@ -121,11 +140,20 @@ export const NavigationBarSection = () => {
                         <li className="pt-4 pb-2 px-3">
                             <button
                                 type="button"
+                                onClick={handleContactClick}
                                 className="w-full flex h-12 items-center justify-center rounded-full bg-blue-600 px-8 font-poppins text-base font-medium text-white shadow-lg transition-opacity hover:opacity-90"
                                 style={{ letterSpacing: "0.5px" }}
                                 aria-label="Contact Us"
                             >
                                 {t("home.contactUs")}
+                            </button>
+                        </li>
+                        <li className="flex justify-center gap-4 pt-4">
+                            <button onClick={() => { changeLanguage('en'); setIsMobileMenuOpen(false); }} className="p-0 border-0 bg-transparent cursor-pointer">
+                                <img src="/gb.png" alt="English" className="w-8 h-8 rounded-full" />
+                            </button>
+                            <button onClick={() => { changeLanguage('fr'); setIsMobileMenuOpen(false); }} className="p-0 border-0 bg-transparent cursor-pointer">
+                                <img src="/fr.png" alt="Français" className="w-8 h-8 rounded-full" />
                             </button>
                         </li>
                     </ul>

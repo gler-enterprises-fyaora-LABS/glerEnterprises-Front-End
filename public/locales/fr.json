@@ -3,7 +3,7 @@
   "welcomeMessage": "Bienvenue sur notre plateforme !",
   "register": "S'inscrire",
   "forgotPassword": "Mot de passe oublié",
-  "verifyEmail": "Vérifiez votre e-mail",
+  "verifyEmail": "Vérifier l'e-mail",
   "termsAndConditions": "Conditions générales",
   "customer": "Client",
   "next": "Suivant",
@@ -11,17 +11,205 @@
   "accountType": "Type de compte",
   "login": {
     "title": "Se connecter",
-    "email": "Entrez votre email",
+    "email": "Entrez votre e-mail",
     "password": "Entrez votre mot de passe",
     "forgotPassword": "Mot de passe oublié ?",
     "signIn": "Se connecter",
     "newHere": "Nouveau ici ?",
     "createAccount": "Créer un compte"
   },
+  "home": {
+    "home": "Accueil",
+    "serviceProviders": "Fournisseurs de services",
+    "investors": "Investisseurs",
+    "contactUs": "Nous contacter",
+    "howItWorks": "COMMENT ÇA MARCHE",
+    "requestBooking": "Demander une réservation",
+    "requestBookingDescription": "Demandez rapidement le service souhaité",
+    "getMatched": "Soyez mis en relation",
+    "getMatchedDescription": "Nous vous mettons en relation avec des professionnels de confiance à proximité",
+    "relaxAndReview": "Détendez-vous et évaluez",
+    "relaxAndReviewDescription": "Payez en toute sécurité, suivez l'état des travaux et laissez un commentaire",
+    "whatCanYouBook": "Que pouvez-vous réserver ?",
+    "homeCleaning": "Nettoyage à domicile",
+    "homeCleaningDescription": "Général, en profondeur, de fin de bail — pour tous les types de propriétés.",
+    "bookPropertyCleaning": "Réserver un nettoyage de propriété",
+    "carValet": "Esthétique automobile",
+    "carValetDescription": "Nettoyage intérieur et extérieur pour toutes les tailles de véhicules.",
+    "bookCarValetService": "Réserver un service d'esthétique automobile",
+    "carWash": "LAVAGE DE VOITURE",
+    "windowCleaning": "Nettoyage de vitres",
+    "windowCleaningDescription": "Résultats sans traces pour les maisons ou les espaces commerciaux.",
+    "bookWindowCleaning": "Réserver un nettoyage de vitres",
+    "contactGlerTeam": "Contacter l'équipe GLER",
+    "contactGlerTeamDescription": "Contactez-nous pour des questions, des commentaires ou des demandes de partenariat.",
+    "firstName": "Prénom",
+    "enterFirstName": "Entrez votre prénom",
+    "lastName": "Nom",
+    "enterLastName": "Entrez votre nom",
+    "email": "E-mail*",
+    "enterEmail": "Entrez votre e-mail",
+    "yourMessage": "Votre message*",
+    "enterYourMessage": "Veuillez détailler votre demande",
+    "agreeToTerms": "J'accepte les ",
+    "privacyPolicyAndTerms": "Politique de confidentialité et Conditions d'utilisation",
+    "submit": "Envoyer"
+  },
+  "benefits": {
+    "verified": "Professionnels du nettoyage vérifiés, expérimentés et contrôlés dans votre région",
+    "noSearch": "Pas besoin de chercher – nous faisons tout le travail pour vous !",
+    "convenient": "Expérience pratique et sans tracas"
+  },
+  "benefitsProviders": {
+    "beYourOwnBoss": "Soyez votre propre patron !",
+    "growingCustomerNetwork": "Réseau de clients en pleine croissance",
+    "getPaidOnTime": "Soyez payé à temps, à chaque fois",
+    "communityTrust": "Communauté basée sur la confiance mutuelle",
+    "competitiveRates": "Tarifs compétitifs"
+  },
+  "benefitsInvestors": {
+    "industry": "Industrie évaluée à 700 milliards de dollars d'ici 2030",
+    "scalable": "Plateforme évolutive avec une architecture globale",
+    "high": "Écosystème de haute confiance avec des fournisseurs vérifiés",
+    "built": "Crédit social intégré et philosophie communautaire",
+    "thorough": "Intégration approfondie avec KYC strict"
+  },
+  "joinWaitlist": {
+    "header": {
+      "subtitle": "RÉSERVEZ DES NETTOYEURS VÉRIFIÉS ET EXPÉRIMENTÉS DANS VOTRE RÉGION EN QUELQUES MINUTES.",
+      "title": "Obtenez un accès en avant-première à un nettoyage sans tracas"
+    },
+    "form": {
+      "email": {
+        "label": "Adresse e-mail*",
+        "placeholder": "Entrez votre e-mail"
+      },
+      "phone": {
+        "label": "Numéro de téléphone",
+        "placeholder": "ex : +123456789"
+      },
+      "postcode": {
+        "label": "Code postal",
+        "placeholder": "Entrez votre code postal"
+      },
+      "submit": "Rejoindre la liste d'attente"
+    },
+    "notifications": {
+      "success": "Inscription à la liste d'attente réussie !",
+      "error": "L'inscription a échoué. Veuillez réessayer plus tard."
+    },
+    "errors": {
+      "email": {
+        "required": "L'adresse e-mail est requise.",
+        "invalid": "Veuillez saisir une adresse e-mail valide."
+      },
+      "phone": {
+        "invalid": "Veuillez saisir un numéro de téléphone britannique valide."
+      }
+    },
+    "alt": {
+      "greenCheck": "Coche verte",
+      "optionalIndicator": "Indicateur de champ optionnel"
+    }
+  },
+  "joinWaitlistInvestors": {
+    "header": {
+      "subtitle": "SOYEZ PRÊT. DÉVELOPPEZ-VOUS AVEC LA PROCHAINE GRANDE PLATEFORME",
+      "title": "Investissez dans notre communauté mondiale du nettoyage"
+    },
+    "form": {
+      "name": {
+        "label": "Nom de l'entreprise / Nom complet*",
+        "placeholder": "Entrez le nom de votre entreprise / votre nom complet"
+      },
+      "phone": {
+        "label": "Numéro de téléphone*"
+      },
+      "submit": "Rejoindre GLER aujourd'hui"
+    },
+    "notifications": {
+      "success": "Inscription à la liste d'attente des investisseurs réussie !",
+      "error": "L'inscription a échoué. Veuillez réessayer plus tard."
+    },
+    "errors": {
+      "email": {
+        "required": "L'adresse e-mail est requise.",
+        "invalid": "Veuillez saisir une adresse e-mail valide."
+      },
+      "name": {
+        "required": "Le nom de l'entreprise / nom complet est requis."
+      },
+      "phone": {
+        "required": "Le numéro de téléphone est requis.",
+        "invalid": "Veuillez saisir un numéro de téléphone valide."
+      }
+    }
+  },
+  "joinWaitlistServiceProviders": {
+    "header": {
+      "subtitle": "DEVENEZ UN PROFESSIONNEL DE CONFIANCE DANS NOTRE RÉSEAU",
+      "title": "Devenez notre partenaire et développez votre entreprise"
+    },
+    "form": {
+      "phone": {
+        "label": "Numéro de téléphone*"
+      },
+      "postcode": {
+        "label": "Code postal*"
+      },
+      "vendorType": {
+        "independent": "Indépendant",
+        "company": "Entreprise"
+      },
+      "services": {
+        "label": "Services que vous proposez*",
+        "placeholder": "Sélectionnez vos services",
+        "selected": "{{count}} service(s) sélectionné(s)"
+      }
+    },
+    "errors": {
+      "email": {
+        "required": "L'e-mail est requis.",
+        "invalid": "Veuillez saisir une adresse e-mail valide."
+      },
+      "phone": {
+        "required": "Le numéro de téléphone est requis.",
+        "invalid": "Veuillez saisir un numéro de téléphone britannique valide."
+      },
+      "postcode": {
+        "required": "Le code postal est requis."
+      },
+      "services": {
+        "required": "Veuillez sélectionner au moins un service."
+      }
+    },
+    "notifications": {
+      "success": "Merci de vous être inscrit sur notre liste d'attente ! Nous vous contacterons sous peu.",
+      "error": "Une erreur s'est produite lors de l'envoi du formulaire. Veuillez réessayer."
+    },
+    "steps": {
+      "signUp": {
+        "title": "Inscription et configuration du profil",
+        "description": "Indiquez-nous où vous opérez et ce que vous proposez"
+      },
+      "verification": {
+        "title": "Finaliser la vérification",
+        "description": "Nous vous guiderons à travers les meilleures pratiques et les normes de santé et de sécurité de GLER"
+      },
+      "getJobs": {
+        "title": "Recevoir des offres d'emploi dans votre région",
+        "description": "Commencez à recevoir et à accepter des réservations"
+      },
+      "getPaid": {
+        "title": "Être payé",
+        "description": "Paiements transparents et ponctuels pour chaque travail terminé."
+      }
+    }
+  },
   "newPass": {
     "title": "Définir un nouveau mot de passe",
     "password": "Entrez votre nouveau mot de passe",
-    "confirmPassword": "Confirmez le mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
     "forgotPassword": "Mot de passe oublié ?",
     "change": "Changer le mot de passe",
     "newHere": "Nouveau ici ?",
@@ -40,13 +228,34 @@
     "logo": "Logo de l'entreprise",
     "google": "Icône de connexion Google",
     "apple": "Icône de connexion Apple",
-    "togglePasswordVisibility": "Afficher/masquer le mot de passe"
+    "togglePasswordVisibility": "Basculer la visibilité du mot de passe"
   },
   "error": {
     "fillFields": "Veuillez remplir les champs utilisateur et mot de passe.",
-    "invalidCredentials": "Identifiants invalides ou erreur serveur. Veuillez réessayer."
+    "invalidCredentials": "Identifiants invalides ou erreur de serveur. Veuillez réessayer."
   },
   "dashboard": {
     "welcome": "C'est ici que le tableau de bord sera créé !"
+  },
+  "footer": {
+    "customers": "Clients",
+    "serviceProviders": "Fournisseurs de services",
+    "investors": "Investisseurs",
+    "rightsReserved": "Gler @ 2025. Tous droits réservés.",
+    "alt": {
+      "logo": "Logo Gler"
+    },
+    "socials": {
+      "youtube": "YouTube",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
+    "aria": {
+      "visit": "Visitez notre page {{label}}",
+      "social": "Liens vers les réseaux sociaux",
+      "navigation": "Navigation du pied de page"
+    }
   }
 }

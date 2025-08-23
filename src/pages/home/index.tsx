@@ -1,9 +1,9 @@
 import "@/i18n";
 import React from 'react';
 import Waitlist from "@/utils/components/home/joinWaitlist";
-import {NavigationBarSection} from "@/utils/components/NavigationBarSection";
-import {Footer} from "@/utils/components/Footer";
-import {ContactFormSection} from "@/utils/components/ContactFormSection";
+import {NavigationBarSection} from "@/utils/components/shared/NavigationBarSection";
+import {Footer} from "@/utils/components/shared/Footer/Footer";
+import {ContactFormSection} from "@/utils/components/shared/ContactFormSection";
 import {MainContentSection} from "@/utils/components/home/MainContentSection";
 
 export interface ILandingPageCostumerWebProps {
@@ -24,7 +24,9 @@ export default function LandingPageCostumerWeb({
             <NavigationBarSection />
             <Waitlist/>
             <MainContentSection />
-            <ContactFormSection />
+            <div id="contact-us">
+                <ContactFormSection />
+            </div>
             <Footer />
         </div>
     );

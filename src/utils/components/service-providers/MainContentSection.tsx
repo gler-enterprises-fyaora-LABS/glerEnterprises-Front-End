@@ -1,213 +1,402 @@
-import React, { useState } from "react";
-import {useTranslation} from "react-i18next";
+import React, {useEffect, useState, useRef, memo} from "react";
+import { useTranslation } from "react-i18next";
+import axios from "axios";
+import { environment } from "@/environment";
+import Notification from "@/utils/components/shared/Notification";
 
-export const MainContentSection = () => {
+interface Service {
+    id: number;
+    name: string;
+}
+
+interface FormErrors {
+    email: string;
+    phone: string;
+    postcode: string;
+    services: string;
+}
+
+export const MainContentSection = memo(() => {
+    const { t } = useTranslation();
     const [formData, setFormData] = useState({
         email: "",
         phone: "",
         postcode: "",
-        vendorType: "Independent",
+        vendorType: "INDEPENDENT",
+        services: [] as number[],
+    });
+    const [errors, setErrors] = useState<FormErrors>({
+        email: "",
+        phone: "",
+        postcode: "",
         services: "",
     });
-    const { t } = useTranslation();
+    const [notification, setNotification] = useState<{
+        message: string;
+        type: "success" | "error" | "warning";
+    } | null>(null);
+    const [services, setServices] = useState<Service[]>([]);
+    const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+    const servicesRef = useRef<HTMLDivElement>(null);
 
-    const [isServicesOpen, setIsServicesOpen] = useState(false);
+    useEffect(() => {
+        const fetchServices = async () => {
+            try {
+                const response = await axios.get(`${environment.apiUrl}/waitlist/services`);
+                setServices(response.data);
+            } catch (error) {
+                console.error("Failed to fetch services:", error);
+            }
+        };
+        fetchServices();
+    }, []);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
+                setServicesDropdownOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [servicesRef]);
 
     const benefits = [
-        {id: "boss", title: "benefitsProviders.beYourOwnBoss"},
-        {id: "network", title: "benefitsProviders.growingCustomerNetwork"},
-        {id: "paid", title: "benefitsProviders.getPaidOnTime"},
-        {id: "trust", title: "benefitsProviders.communityTrust"},
-        {id: "rates", title: "benefitsProviders.competitiveRates"},
+        { id: "beYourOwnBoss", title: "benefitsProviders.beYourOwnBoss" },
+        { id: "growingCustomerNetwork", title: "benefitsProviders.growingCustomerNetwork" },
+        { id: "getPaidOnTime", title: "benefitsProviders.getPaidOnTime" },
+        { id: "communityTrust", title: "benefitsProviders.communityTrust" },
+        { id: "competitiveRates", title: "benefitsProviders.competitiveRates" },
     ];
 
-    const handleInputChange = (field: string, value: string) => {
+    const validate = (): FormErrors => {
+        const newErrors: FormErrors = { email: "", phone: "", postcode: "", services: "" };
+
+        if (!formData.email) {
+            newErrors.email = t("joinWaitlistServiceProviders.errors.email.required");
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newErrors.email = t("joinWaitlistServiceProviders.errors.email.invalid");
+        }
+
+        const phoneRegex = /^(?:\+44|0)7\d{9}$/;
+        if (!formData.phone) {
+            newErrors.phone = t("joinWaitlistServiceProviders.errors.phone.required");
+        } else if (!phoneRegex.test(formData.phone.replace(/\s/g, ""))) {
+            newErrors.phone = t("joinWaitlistServiceProviders.errors.phone.invalid");
+        }
+
+        if (!formData.postcode) {
+            newErrors.postcode = t("joinWaitlistServiceProviders.errors.postcode.required");
+        }
+
+        if (formData.services.length === 0) {
+            newErrors.services = t("joinWaitlistServiceProviders.errors.services.required");
+        }
+
+        return newErrors;
+    };
+
+    const handleInputChange = (field: keyof typeof formData, value: string | number[]) => {
         setFormData((prev) => ({
             ...prev,
             [field]: value,
         }));
+        if (errors[field as keyof FormErrors]) {
+            setErrors((prev) => ({ ...prev, [field]: "" }));
+        }
     };
 
-    const handleVendorTypeChange = (type: string) => {
-        setFormData((prev) => ({
-            ...prev,
-            vendorType: type,
-        }));
+    const handleServicesChange = (serviceId: number) => {
+        const newServices = formData.services.includes(serviceId)
+            ? formData.services.filter((id) => id !== serviceId)
+            : [...formData.services, serviceId];
+        handleInputChange("services", newServices);
     };
 
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
+        const newErrors = validate();
+        if (Object.values(newErrors).some(error => error)) {
+            setErrors(newErrors);
+            return;
+        }
+
+        try {
+            const response = await axios.post(
+                `${environment.apiUrl}/waitlist/service-provider/join`,
+                {
+                    email: formData.email,
+                    telnum: formData.phone,
+                    postcode: formData.postcode,
+                    vendorType: formData.vendorType,
+                    servicesOffered: formData.services,
+                },
+            );
+
+            if (response.status === 200 || response.status === 201) {
+                setNotification({
+                    message: t("joinWaitlistServiceProviders.notifications.success"),
+                    type: "success",
+                });
+                setFormData({
+                    email: "",
+                    phone: "",
+                    postcode: "",
+                    vendorType: "INDEPENDENT",
+                    services: [],
+                });
+                setErrors({ email: "", phone: "", postcode: "", services: "" });
+            }
+        } catch (error) {
+            console.error("Form submission error:", error);
+            setNotification({
+                message: t("joinWaitlistServiceProviders.notifications.error"),
+                type: "error",
+            });
+        }
     };
 
-    const buttonBaseClasses = "flex h-12 items-center justify-center rounded-full px-8 font-poppins text-base font-medium shadow-[1px_1px_3px_rgba(0,0,0,0.1),_5px_3px_6px_rgba(0,0,0,0.09),_10px_8px_8px_rgba(0,0,0,0.05),_18px_13px_9px_rgba(0,0,0,0.01),_29px_21px_10px_rgba(0,0,0,0)] transition-all duration-300 ease-in-out hover:opacity-90";
+    const buttonBaseClasses =
+        "flex h-12 items-center justify-center rounded-full px-8 font-poppins text-base font-medium shadow-[1px_1px_3px_rgba(0,0,0,0.1),_5px_3px_6px_rgba(0,0,0,0.09),_10px_8px_8px_rgba(0,0,0,0.05),_18px_13px_9px_rgba(0,0,0,0.01),_29px_21px_10px_rgba(0,0,0,0)] transition-all duration-300 ease-in-out hover:opacity-90";
 
     return (
-        <section className="flex flex-col w-full items-center justify-center gap-8 lg:gap-12 pt-16 pb-20 px-4 sm:px-8 md:px-20">
-            <header className="flex flex-col items-center gap-2 w-full max-w-7xl">
-                <p className="relative self-stretch [font-family:'Roboto-Bold',Helvetica] font-bold text-primary-90 text-lg md:text-xl text-center tracking-[1.00px] leading-5">
-                    JOIN OUR TRUSTED NETWORK OF CLEANING PROS.
-                </p>
-                <h1 className="relative self-stretch [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-4xl md:text-[54px] text-center tracking-[0] leading-tight md:leading-[59.4px]">
-                    Become a Gler Service Provider
-                </h1>
-            </header>
+        <>
+            {notification && (
+                <Notification
+                    message={notification.message}
+                    type={notification.type}
+                    onClose={() => setNotification(null)}
+                />
+            )}
+            <section className="flex flex-col w-full items-center justify-center gap-8 lg:gap-12 pt-16 pb-20 px-4 sm:px-8 md:px-20">
+                <header className="flex flex-col items-center gap-2 w-full max-w-7xl">
+                    <p className="relative self-stretch [font-family:'Roboto-Bold',Helvetica] font-bold text-primary-90 text-lg md:text-xl text-center tracking-[1.00px] leading-5">
+                        {t("joinWaitlistServiceProviders.header.subtitle")}
+                    </p>
+                    <h1 className="relative self-stretch [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-4xl md:text-[54px] text-center tracking-[0] leading-tight md:leading-[59.4px]">
+                        {t("joinWaitlistServiceProviders.header.title")}
+                    </h1>
+                </header>
 
-            <div className="flex flex-col lg:flex-row w-full max-w-7xl items-start justify-center gap-8 lg:gap-20">
-                <aside className="flex flex-col w-full lg:w-[545px] items-center justify-center gap-4 relative bg-variable-collection-bg p-4 rounded-lg">
-                    <div className="flex flex-col h-full items-center justify-center gap-4 self-stretch w-full">
-                        {benefits.map((benefit) => (
-                            <div className="flex items-center gap-4 p-4 relative self-stretch w-full" key={benefit.id}>
-                                <img
-                                    className="relative w-12 h-12"
-                                    alt="Green check"
-                                    src="/greenCheck.svg"
-                                />
-                                <p className="flex-1 [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-xl md:text-2xl tracking-[0] leading-tight md:leading-[26.4px]">
-                                    {t(benefit.title)}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </aside>
-
-                <div className="flex flex-col w-full lg:w-[655px] items-start justify-center">
-                    <form
-                        onSubmit={handleSubmit}
-                        className="flex flex-col items-start gap-6 relative self-stretch w-full"
-                    >
-                        <div className="flex items-center gap-2 self-stretch w-full p-1 bg-gray-100 rounded-full">
-                            <button
-                                type="button"
-                                onClick={() => handleVendorTypeChange("Independent")}
-                                className={`${buttonBaseClasses} flex-1 ${
-                                    formData.vendorType === "Independent"
-                                        ? "bg-blue-600 text-white"
-                                        : "bg-transparent text-gray-500"
-                                }`}
-                                style={{ letterSpacing: "0.5px" }}
-                            >
-                                Independent
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => handleVendorTypeChange("Company")}
-                                className={`${buttonBaseClasses} flex-1 ${
-                                    formData.vendorType === "Company"
-                                        ? "bg-blue-600 text-white"
-                                        : "bg-transparent text-gray-500"
-                                }`}
-                                style={{ letterSpacing: "0.5px" }}
-                            >
-                                Company
-                            </button>
-                        </div>
-                        <div className="flex flex-col w-full items-start gap-1 relative">
-                            <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
-                                <label
-                                    htmlFor="email"
-                                    className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]"
+                <div className="flex flex-col lg:flex-row w-full max-w-7xl items-start justify-center gap-8 lg:gap-20">
+                    <aside className="flex flex-col w-full lg:w-[545px] items-center justify-center gap-4 relative bg-variable-collection-bg p-4 rounded-lg">
+                        <div className="flex flex-col h-full items-center justify-center gap-4 self-stretch w-full">
+                            {benefits.map((benefit) => (
+                                <div
+                                    className="flex items-center gap-4 p-4 relative self-stretch w-full"
+                                    key={benefit.id}
                                 >
-                                    Email Address*
-                                </label>
-
-                                <div className="flex h-12 items-center gap-2 px-4 py-3 relative self-stretch w-full bg-[#f3f8ff] border-b [border-bottom-style:solid] border-[#c1c7cd]">
-                                    <input
-                                        id="email"
-                                        type="email"
-                                        value={formData.email}
-                                        onChange={(e) => handleInputChange("email", e.target.value)}
-                                        placeholder="Enter Your E-mail"
-                                        required
-                                        className="relative flex-1 [font-family:'Poppins-Regular',Helvetica] font-normal text-coolgray-60 text-base tracking-[0] leading-[22.4px] bg-transparent border-none outline-none placeholder:text-coolgray-60"
+                                    <img
+                                        className="relative w-12 h-12"
+                                        alt={t("joinWaitlist.alt.greenCheck")}
+                                        src="/greenCheck.svg"
                                     />
+                                    <p className="flex-1 [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-xl md:text-2xl tracking-[0] leading-tight md:leading-[26.4px]">
+                                        {t(benefit.title)}
+                                    </p>
                                 </div>
-                            </div>
+                            ))}
                         </div>
+                    </aside>
 
-                        <div className="flex flex-col w-full items-start gap-1 relative">
-                            <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
-                                <label
-                                    htmlFor="phone"
-                                    className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]"
-                                >
-                                    Phone Number*
-                                </label>
-
-                                <div className="flex h-12 items-center gap-2 px-4 py-3 relative self-stretch w-full bg-[#f3f8ff] border-b [border-bottom-style:solid] border-[#c1c7cd]">
-                                    <input
-                                        id="phone"
-                                        type="tel"
-                                        value={formData.phone}
-                                        onChange={(e) => handleInputChange("phone", e.target.value)}
-                                        placeholder="e.g. +123456789"
-                                        required
-                                        className="relative flex-1 [font-family:'Poppins-Regular',Helvetica] font-normal text-coolgray-60 text-base tracking-[0] leading-[22.4px] bg-transparent border-none outline-none placeholder:text-coolgray-60"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col w-full items-start gap-1 relative">
-                            <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
-                                <label
-                                    htmlFor="postcode"
-                                    className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]"
-                                >
-                                    Postcode*
-                                </label>
-
-                                <div className="flex h-12 items-center gap-2 px-4 py-3 relative self-stretch w-full bg-[#f3f8ff] border-b [border-bottom-style:solid] border-variable-collection-stroke">
-                                    <input
-                                        id="postcode"
-                                        type="text"
-                                        value={formData.postcode}
-                                        onChange={(e) =>
-                                            handleInputChange("postcode", e.target.value)
-                                        }
-                                        placeholder="Enter Your Postcode"
-                                        required
-                                        className="relative flex-1 [font-family:'Poppins-Regular',Helvetica] font-normal text-coolgray-60 text-base tracking-[0] leading-[22.4px] bg-transparent border-none outline-none placeholder:text-coolgray-60"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col w-full items-start gap-1 relative">
-                            <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
-                                <label
-                                    htmlFor="services"
-                                    className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]"
-                                >
-                                    Services Offered*
-                                </label>
-
-                                <div className="relative self-stretch w-full">
-                                    <button
-                                        type="button"
-                                        onClick={() => setIsServicesOpen(!isServicesOpen)}
-                                        className="flex flex-col h-12 items-start justify-center p-4 relative self-stretch w-full bg-[#f3f8ff] border-b [border-bottom-style:solid] border-variable-collection-stroke"
-                                    >
-                                        <div className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto] mt-[-4.00px] mb-[-4.00px]">
-                                            <div className="relative flex-1 [font-family:'Poppins-Regular',Helvetica] font-normal text-coolgray-60 text-base tracking-[0] leading-[22.4px]">
-                                                {formData.services || "Select Services Offered"}
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button
-                            type="submit"
-                            className={`${buttonBaseClasses} w-full bg-blue-600 text-white`}
-                            style={{ letterSpacing: '0.5px' }}
+                    <div className="flex flex-col w-full lg:w-[655px] items-start justify-center">
+                        <form
+                            onSubmit={handleSubmit}
+                            className="flex flex-col items-start gap-6 relative self-stretch w-full"
                         >
-                            Join Waitlist
-                        </button>
-                    </form>
+                            <div className="flex flex-col w-full items-start gap-1 relative">
+                                <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
+                                    <label
+                                        htmlFor="email"
+                                        className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]"
+                                    >
+                                        {t("joinWaitlist.form.email.label")}
+                                    </label>
+                                    <div className="flex h-12 items-center gap-2 px-4 py-3 relative self-stretch w-full bg-[#f3f8ff] border-b [border-bottom-style:solid] border-[#c1c7cd]">
+                                        <input
+                                            id="email"
+                                            type="email"
+                                            value={formData.email}
+                                            onChange={(e) =>
+                                                handleInputChange("email", e.target.value)
+                                            }
+                                            placeholder={t("joinWaitlist.form.email.placeholder")}
+                                            required
+                                            className="relative flex-1 [font-family:'Poppins-Regular',Helvetica] font-normal text-coolgray-60 text-base tracking-[0] leading-[22.4px] bg-transparent border-none outline-none placeholder:text-coolgray-60"
+                                        />
+                                    </div>
+                                    {errors.email && (
+                                        <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="flex w-full items-start gap-4">
+                                <div className="flex flex-col w-full items-start gap-1 relative">
+                                    <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
+                                        <label
+                                            htmlFor="phone"
+                                            className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]"
+                                        >
+                                            {t(
+                                                "joinWaitlistServiceProviders.form.phone.label",
+                                            )}
+                                        </label>
+                                        <div className="flex h-12 items-center gap-2 px-4 py-3 relative self-stretch w-full bg-[#f3f8ff] border-b [border-bottom-style:solid] border-variable-collection-stroke">
+                                            <input
+                                                id="phone"
+                                                type="tel"
+                                                value={formData.phone}
+                                                onChange={(e) =>
+                                                    handleInputChange("phone", e.target.value)
+                                                }
+                                                placeholder={t(
+                                                    "joinWaitlist.form.phone.placeholder",
+                                                )}
+                                                required
+                                                className="relative flex-1 [font-family:'Poppins-Regular',Helvetica] font-normal text-coolgray-60 text-base tracking-[0] leading-[22.4px] bg-transparent border-none outline-none placeholder:text-coolgray-60"
+                                            />
+                                        </div>
+                                        {errors.phone && (
+                                            <p className="text-red-500 text-xs mt-1">
+                                                {errors.phone}
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col w-full items-start gap-1 relative">
+                                    <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
+                                        <label
+                                            htmlFor="postcode"
+                                            className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]"
+                                        >
+                                            {t(
+                                                "joinWaitlistServiceProviders.form.postcode.label",
+                                            )}
+                                        </label>
+                                        <div className="flex h-12 items-center gap-2 px-4 py-3 relative self-stretch w-full bg-[#f3f8ff] border-b [border-bottom-style:solid] border-variable-collection-stroke">
+                                            <input
+                                                id="postcode"
+                                                type="text"
+                                                value={formData.postcode}
+                                                onChange={(e) =>
+                                                    handleInputChange("postcode", e.target.value)
+                                                }
+                                                placeholder={t(
+                                                    "joinWaitlist.form.postcode.placeholder",
+                                                )}
+                                                required
+                                                className="relative flex-1 [font-family:'Poppins-Regular',Helvetica] font-normal text-coolgray-60 text-base tracking-[0] leading-[22.4px] bg-transparent border-none outline-none placeholder:text-coolgray-60"
+                                            />
+                                        </div>
+                                        {errors.postcode && (
+                                            <p className="text-red-500 text-xs mt-1">
+                                                {errors.postcode}
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col w-full items-start gap-1 relative">
+                                <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
+                                    <label className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]">
+                                        {t("accountType")}
+                                    </label>
+                                    <div className="flex items-center gap-4">
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                handleInputChange("vendorType", "INDEPENDENT")
+                                            }
+                                            className={`${buttonBaseClasses} ${
+                                                formData.vendorType === "INDEPENDENT"
+                                                    ? "bg-blue-600 text-white"
+                                                    : "bg-gray-200 text-gray-800"
+                                            }`}
+                                        >
+                                            {t(
+                                                "joinWaitlistServiceProviders.form.vendorType.independent",
+                                            )}
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                handleInputChange("vendorType", "COMPANY")
+                                            }
+                                            className={`${buttonBaseClasses} ${
+                                                formData.vendorType === "COMPANY"
+                                                    ? "bg-blue-600 text-white"
+                                                    : "bg-gray-200 text-gray-800"
+                                            }`}
+                                        >
+                                            {t(
+                                                "joinWaitlistServiceProviders.form.vendorType.company",
+                                            )}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex flex-col w-full items-start gap-1 relative">
+                                <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
+                                    <label
+                                        className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]"
+                                    >
+                                        {t("joinWaitlistServiceProviders.form.services.label")}
+                                    </label>
+                                    <div className="relative w-full" ref={servicesRef}>
+                                        <button
+                                            type="button"
+                                            className="flex h-12 items-center justify-between gap-2 px-4 py-3 relative self-stretch w-full bg-[#f3f8ff] border-b [border-bottom-style:solid] border-variable-collection-stroke text-left"
+                                            onClick={() => setServicesDropdownOpen(prev => !prev)}
+                                        >
+                                             <span className="relative flex-1 [font-family:'Poppins-Regular',Helvetica] font-normal text-coolgray-60 text-base tracking-[0] leading-[22.4px] bg-transparent border-none outline-none placeholder:text-coolgray-60">
+                                                {formData.services.length > 0
+                                                    ? t('joinWaitlistServiceProviders.form.services.selected', { count: formData.services.length })
+                                                    : t('joinWaitlistServiceProviders.form.services.placeholder')}
+                                            </span>
+                                        </button>
+                                        {servicesDropdownOpen && (
+                                            <div className="absolute z-10 mt-1 w-full bg-white rounded-md shadow-lg border border-gray-200 max-h-60 overflow-y-auto">
+                                                {services.map(service => (
+                                                    <label
+                                                        key={service.id}
+                                                        htmlFor={service.id.toString()}
+                                                        className="flex items-center gap-2 p-2 hover:bg-gray-100 cursor-pointer"
+                                                    >
+                                                        <input
+                                                            type="checkbox"
+                                                            id={service.id.toString()}
+                                                            checked={formData.services.includes(service.id)}
+                                                            onChange={() => handleServicesChange(service.id)}
+                                                            className="mr-2"
+                                                        />
+                                                        <span>{service.name}</span>
+                                                    </label>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                    {errors.services && (
+                                        <p className="text-red-500 text-xs mt-1">{errors.services}</p>
+                                    )}
+                                </div>
+                            </div>
+                            <button
+                                type="submit"
+                                className={`${buttonBaseClasses} w-full bg-blue-600 text-white`}
+                                style={{ letterSpacing: "0.5px" }}
+                            >
+                                {t("joinWaitlist.form.submit")}
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
-};
+});
+MainContentSection.displayName = "MainContentSection";

@@ -1,46 +1,49 @@
-import React from "react";
+import React, { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Facebook } from "./Facebook";
 import { Instagram } from "./Instagram";
 import { Linkedin } from "./Linkedin";
 import { Twitter } from "./Twitter";
 import { Youtube } from "./Youtube";
-import gler from "../../../public/gler.svg";
+import gler from "../../../../../public/gler.svg";
 import Link from "next/link";
 
-export const Footer = () => {
+export const Footer = memo(() => {
+    const { t } = useTranslation();
+
     const socialMediaLinks = [
-        { Component: Youtube, label: "YouTube" },
-        { Component: Facebook, label: "Facebook" },
-        { Component: Twitter, label: "Twitter" },
-        { Component: Instagram, label: "Instagram" },
-        { Component: Linkedin, label: "LinkedIn" },
+        { Component: Youtube, labelKey: "footer.socials.youtube" },
+        { Component: Facebook, labelKey: "footer.socials.facebook" },
+        { Component: Twitter, labelKey: "footer.socials.twitter" },
+        { Component: Instagram, labelKey: "footer.socials.instagram" },
+        { Component: Linkedin, labelKey: "footer.socials.linkedin" },
     ];
 
     const navigationLinks = [
-        { text: "Customers", href: "/" },
-        { text: "Service Providers", href: "/service-providers" },
-        { text: "Investors", href: "/investors" },
+        { textKey: "footer.customers", href: "/" },
+        { textKey: "footer.serviceProviders", href: "/service-providers" },
+        { textKey: "footer.investors", href: "/investors" },
     ];
 
     return (
         <footer className="flex w-full flex-col items-center gap-8 bg-[#fcfdff] px-4 py-12 shadow-[0px_-4px_4px_#00000040] sm:px-8 md:px-20">
             <div className="flex w-full max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
-                <Link href="/">
+                <Link href="/public">
                     <img
                         className="h-[50px] w-[59px]"
-                        alt="Gler logo"
+                        alt={t("footer.alt.logo")}
                         src={gler.src}
                     />
                 </Link>
                 <nav
                     className="flex flex-wrap items-center justify-center gap-4"
-                    aria-label="Social media links"
+                    aria-label={t("footer.aria.social")}
                 >
-                    {socialMediaLinks.map(({ Component, label }, index) => (
+                    {socialMediaLinks.map(({ Component, labelKey }, index) => (
                         <a
                             key={index}
                             href="#"
-                            aria-label={`Visit our ${label} page`}
+                            aria-label={t("footer.aria.visit", { label: t(labelKey) })}
                             className="transition-opacity duration-200 hover:opacity-70"
                         >
                             <Component className="h-6 w-6" />
@@ -53,20 +56,20 @@ export const Footer = () => {
 
             <div className="flex w-full max-w-7xl flex-col-reverse items-center justify-between gap-8 md:flex-row">
                 <p className="whitespace-nowrap font-['Poppins-Regular',Helvetica] text-sm font-normal leading-[19.6px] tracking-[0] text-[#0a0b0c]">
-                    Gler @ 2025. All rights reserved.
+                    {t("footer.rightsReserved")}
                 </p>
                 <nav
                     className="flex flex-wrap items-center justify-center gap-4"
-                    aria-label="Footer navigation"
+                    aria-label={t("footer.aria.navigation")}
                 >
-                    {navigationLinks.map(({ text, href }, index) => (
+                    {navigationLinks.map(({ textKey, href }, index) => (
                         <Link
                             key={index}
                             href={href}
                             className="inline-flex items-center gap-2 px-2 py-3 transition-opacity duration-200 hover:opacity-70"
                         >
                             <span className="whitespace-nowrap font-['Poppins-Medium',Helvetica] text-base font-medium leading-4 tracking-[0] text-[#0a0b0c]">
-                                {text}
+                                {t(textKey)}
                             </span>
                         </Link>
                     ))}
@@ -74,4 +77,4 @@ export const Footer = () => {
             </div>
         </footer>
     );
-};
+});

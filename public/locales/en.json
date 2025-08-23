@@ -18,7 +18,7 @@
     "newHere": "New here?",
     "createAccount": "Create account"
   },
-  "home":{
+  "home": {
     "home": "Home",
     "serviceProviders": "Service Providers",
     "investors": "Investors",
@@ -53,14 +53,7 @@
     "enterYourMessage": "Please enter your inquiry detailed",
     "agreeToTerms": "I agree to the ",
     "privacyPolicyAndTerms": "Privacy Policy & Terms",
-    "submit": "Submit",
-    "glerServices": "GLER Services",
-    "glerServicesDescription": "Connecting you with trusted professionals for all your cleaning needs.",
-    "footerContactUs": "Contact Us",
-    "footerEmail": "Email: info@gler.com",
-    "footerPhone": "Phone: +1 (555) 123-4567",
-    "followUs": "Follow Us",
-    "copyright": "© 2025 GLER Services. All rights reserved."
+    "submit": "Submit"
   },
   "benefits": {
     "verified": "Verified, Experienced & Vetted Cleaning Professionals in your local area",
@@ -100,6 +93,117 @@
         "placeholder": "Enter Your Postcode"
       },
       "submit": "Join Waitlist"
+    },
+    "notifications": {
+      "success": "Successfully joined the waitlist!",
+      "error": "Failed to join. Please try again later."
+    },
+    "errors": {
+      "email": {
+        "required": "Email address is required.",
+        "invalid": "Please enter a valid email address."
+      },
+      "phone": {
+        "invalid": "Please enter a valid UK phone number."
+      }
+    },
+    "alt": {
+      "greenCheck": "Green checkmark",
+      "optionalIndicator": "Optional field indicator"
+    }
+  },
+  "joinWaitlistInvestors": {
+    "header": {
+      "subtitle": "GET IN EARLY. GROW WITH THE NEXT BIG PLATFORM",
+      "title": "Invest in Our Global Cleaning Community"
+    },
+    "form": {
+      "name": {
+        "label": "Company Name / Full Name*",
+        "placeholder": "Enter Your Company Name / Full Name"
+      },
+      "phone": {
+        "label": "Phone Number*"
+      },
+      "submit": "Join GLER Today"
+    },
+    "notifications": {
+      "success": "Successfully joined the investor waitlist!",
+      "error": "Failed to join. Please try again later."
+    },
+    "errors": {
+      "email": {
+        "required": "Email address is required.",
+        "invalid": "Please enter a valid email address."
+      },
+      "name": {
+        "required": "Company Name / Full Name is required."
+      },
+      "phone": {
+        "required": "Phone number is required.",
+        "invalid": "Please enter a valid phone number."
+      }
+    }
+  },
+  "joinWaitlistServiceProviders": {
+    "header": {
+      "subtitle": "BECOME A TRUSTED PROFESSIONAL IN OUR NETWORK",
+      "title": "Partner with Us and Grow Your Business"
+    },
+    "form": {
+      "phone": {
+        "label": "Phone Number*"
+      },
+      "postcode": {
+        "label": "Postcode*"
+      },
+      "vendorType": {
+        "independent": "Independent",
+        "company": "Company"
+      },
+      "services": {
+        "label": "Services You Offer*",
+        "placeholder": "Select your services",
+        "selected": "{{count}} service(s) selected"
+      }
+    },
+    "errors": {
+      "email": {
+        "required": "Email is required.",
+        "invalid": "Please enter a valid email address."
+      },
+      "phone": {
+        "required": "Phone number is required.",
+        "invalid": "Please enter a valid UK phone number."
+      },
+      "postcode": {
+        "required": "Postcode is required."
+      },
+      "services": {
+        "required": "Please select at least one service."
+      }
+    },
+    "notifications": {
+      "success": "Thank you for joining our waitlist! We will be in touch shortly.",
+      "error": "An error occurred while submitting the form. Please try again."
+    },
+    "steps": {
+      "signUp": {
+        "title": "Sign Up & Set Profile",
+        "description": "Tell us where you operate and what you offer"
+      },
+      "verification": {
+        "title": "Complete Verification",
+        "description": "We’ll guide you through GLER’s best practices and H&S"
+      },
+      "getJobs": {
+        "title": "Get Jobs in Your Area",
+        "description": "Start receiving and accepting bookings"
+      },
+      "getPaid": {
+        "title": "Get Paid",
+        "description": "Transparent, timely payments for every completed job."
+      }
     }
   },
   "newPass": {
@@ -132,5 +236,26 @@
   },
   "dashboard": {
     "welcome": "This is where the dashboard will be created!"
+  },
+  "footer": {
+    "customers": "Customers",
+    "serviceProviders": "Service Providers",
+    "investors": "Investors",
+    "rightsReserved": "Gler @ 2025. All rights reserved.",
+    "alt": {
+      "logo": "Gler logo"
+    },
+    "socials": {
+      "youtube": "YouTube",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
+    "aria": {
+      "visit": "Visit our {{label}} page",
+      "social": "Social media links",
+      "navigation": "Footer navigation"
+    }
   }
 }
