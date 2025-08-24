@@ -170,12 +170,12 @@ export const MainContentSection = memo(() => {
                     onClose={() => setNotification(null)}
                 />
             )}
-            <section className="flex flex-col w-full items-center justify-center gap-8 lg:gap-12 pt-16 pb-20 px-4 sm:px-8 md:px-20">
+            <section className="flex flex-col w-full items-center justify-center gap-8 lg:gap-12 py-12 px-4 md:py-16 md:px-8 lg:py-20 lg:px-20">
                 <header className="flex flex-col items-center gap-2 w-full max-w-7xl">
-                    <p className="relative self-stretch [font-family:'Roboto-Bold',Helvetica] font-bold text-primary-90 text-lg md:text-xl text-center tracking-[1.00px] leading-5">
+                    <p className="relative self-stretch [font-family:'Roboto-Bold',Helvetica] font-bold text-primary-90 text-base sm:text-lg md:text-xl text-center tracking-[1.00px] leading-5">
                         {t("joinWaitlistServiceProviders.header.subtitle")}
                     </p>
-                    <h1 className="relative self-stretch [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-4xl md:text-[54px] text-center tracking-[0] leading-tight md:leading-[59.4px]">
+                    <h1 className="relative self-stretch [font-family:'Poppins-Bold',Helvetica] font-bold text-coolgray-90 text-3xl sm:text-4xl md:text-[54px] text-center tracking-[0] leading-tight md:leading-[59.4px]">
                         {t("joinWaitlistServiceProviders.header.title")}
                     </h1>
                 </header>
@@ -233,7 +233,7 @@ export const MainContentSection = memo(() => {
                                 </div>
                             </div>
 
-                            <div className="flex w-full items-start gap-4">
+                            <div className="flex flex-col md:flex-row w-full items-start gap-6 md:gap-4">
                                 <div className="flex flex-col w-full items-start gap-1 relative">
                                     <div className="flex flex-col items-start gap-2 relative self-stretch w-full">
                                         <label
@@ -306,7 +306,7 @@ export const MainContentSection = memo(() => {
                                     <label className="relative self-stretch [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-coolgray-90 text-xl md:text-2xl tracking-[-0.48px] leading-[28.8px]">
                                         {t("accountType")}
                                     </label>
-                                    <div className="flex items-center gap-4">
+                                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                                         <button
                                             type="button"
                                             onClick={() =>
